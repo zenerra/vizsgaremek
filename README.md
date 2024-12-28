@@ -1,48 +1,49 @@
-# Nyílvántartó rendszer vizsgaremek 
+# Nyilvántartó rendszer vizsgaremek 
 
-E bolti nyilvántartó szoftver egy modern, integrált rendszer, amely hatékonyan segíti a készletek és tranzakciók kezelését bármelyik vegyeskereskedelmi kisboltnak. A szoftver két fő modulból áll: egy webes felületből és egy asztali applikációból. A webes felület lehetővé teszi a beérkező áruk és a raktárkészlet nyomon követését, a termékek adatainak szerkesztését, valamint részletes statisztikák és kimutatások készítését. A felhasználók itt láthatják a legnépszerűbb termékek forgalmát, a készletmozgásokat, és exportálhatják a jelentéseket különböző időszakokra vonatkozóan. Az asztali applikáció elsősorban a napi tranzakciók lebonyolítására szolgál. 
+E bolti nyilvántartó szoftver egy modern, integrált rendszer, amely hatékonyan segíti a készletek és tranzakciók kezelését bármelyik vegyeskereskedelmi kisboltnak. A szoftver két fő modulból áll: egy webes felületből és egy asztali applikációból. A webes felület lehetővé teszi a beérkező áruk és a raktárkészlet nyomon követését, a termékek adatainak szerkesztését, valamint részletes statisztikák és kimutatások készítését. A bolti alkalmazottak itt láthatják a legnépszerűbb termékek forgalmát, a készletmozgásokat, és exportálhatják a jelentéseket különböző időszakokra vonatkozóan. Az asztali applikáció elsősorban a vásárlói tranzakciók feljegyzésére és nyugtázására szolgál. 
 
-Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuitív felületen, amely támogatja a vonalkódos beolvasást és a nyugták, számlák automatikus nyomtatását. Az alkalmazás offline módban is működik, a raktári mozgásokat pedig valós időben szinkronizálja a webes felülettel, amikor elérhető az internetkapcsolat. A rendszer többfelhasználós működést támogat, különböző jogosultsági szintekkel, és biztosítja a tranzakciók, valamint az adatmódosítások naplózását. A szoftver rugalmasan testreszabható, felhasználóbarát kialakítása pedig megkönnyíti a mindennapi munkavégzést a boltvezetők és az alkalmazottak számára.
+Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuitív felületen, amely lehetővé teszi a nyugták automatikus formázáésát. Az alkalmazás offline módban is működik, a raktári mozgásokat pedig valós időben szinkronizálja a webes felülettel, amikor elérhető az internetkapcsolat. A rendszer többfelhasználós működést támogat, különböző jogosultsági szintekkel, és biztosítja a tranzakciók, valamint az adatmódosítások naplózását. A szoftver rugalmasan testreszabható, felhasználóbarát kialakítása pedig megkönnyíti a mindennapi munkavégzést a boltvezetők és az alkalmazottak számára.
 
 ## 1. Követelmények és tervezés
    ### Célok meghatározása:
    ### Felhasználói szerepkörök definiálása:
-- Ki használja a rendszert (pl.: üzletvezető, eladó, raktáros)
-- Milyen jogosultságokra van szükség (pl.: adatbevitel, jelentések készítése)?
+- **Pénztáros:** kizárólag az asztali aplikáció használatára jogosult
+- **Üzletvezető:** abszolút jogosultsága van minden rendszerhez
+- **Raktáros:** kizárólag a webes felület használatára van jogosultsága
   
 ### Funkciók listája:
-- Készletkezelés: árubeérkezés és árukiadás követése.
-- Számlázás: egyszerű számlák kiállítása. (pl.: szöveges fájl)
-- Rendeléskezelés: beszállítói rendelések létrehozása.
-- Jelentések készítése: eladási statisztikák, készletinformációk. (web)
-- Beszállító tábla: kapcsolattartási adatok tárolása.
+- **Készletkezelés:** árubeérkezés és árukiadás követése.
+- **Számlázás: egyszerű** számlák formázása és kiállítása szöveges fájl formájában.
+- **Rendeléskezelés:** beszállítói rendelések létrehozása szöveges formátumban.
+- **Jelentések készítése:** eladási statisztikák, készletinformációk megtekinthetők a webes felületen.
+- **Beszállító entitás:** kapcsolattartási e-mail cím tárolása.
   
 ### Adatmodell kialakítása:
-- Termékek: azonosító, név, kategória, ár, készletmennyiség, beszállító.
-- Beszállítók: név, cím, elérhetőségek.
-- Számlák: dátum idő, vevő adatai, vásárolt tételek, összeg.
+- **Termékek:** azonosító, név, kategória, ár, készletmennyiség, beszállító, korhatáros (logikai érték, igaz/hamis).
+- **Beszállítók:** név, cím, e-mail cím.
+- **Számlák:** dátum idő, vevő adatai, vásárolt tételek, összeg. **--!!**
 ## 2. Fejlesztési folyamat
 ### Készletkezelés megvalósítása:
    - Termékek hozzáadása, szerkesztése és törlése.
-   - Készletmozgások (beérkezés, eladás) naplózása.
+   - Készletmozgások, beérkezés és eladás naplózása.
 ### Számlázó modul fejlesztése:
-  - Vásárlási tételek kosárba helyezése.
-  - Számla generálása (pl.: szöveges fájl vagy nyomtatásra kész formátum).
-  - Számla adatok tárolása későbbi visszakereséshez
+  - Vásárlási tételek tranzakcióhoz adása.
+  - Számla generálása szöveges fájl formátumában.
+  - Számla adatok tárolása későbbi visszakereséshez. **--!!**
 ### Rendeléskezelés:
-  - Hiányzó áruk automatikus azonosítása.
-  - Beszállítói rendelés létrehozása (p.: e-mailes értesítés vagy PDF formátum).
-  - Számla adatok tárolása későbbi visszakereséshez
+  - Hiányzó vagy fogyó áruk automatikus azonosítása.
+  - Beszállítói rendelés létrehozása szöveges formában.
+  - Beszállítói számla adatok tárolása későbbi visszakereséshez.
 ### Kapcsolattartás a beszállítókkal:
-  - Beszállítói adatbázis karbantartása.
-  - Automatikus értesítések küldése (pl.: alacsony készlet esetén).
+  - Beszállító entitás kezelése.
+  - Alacsony készlet esetén automatikus figyelemfelhívás, küldésre kész rendeléssel együtt.
 ## 3. Felhasználói felület kialakítása
   ### Egyszerű és áttekinthető UI:
   - Könnyen kezelhető termék- és számlázási modul.
   - Készletjelentések és rendelési előzmények gyors elérése
   ### Webes és asztali felület:
-  - Webes: Jelentések megjelenítése és adatbázis tartalom manuális módosítása
-  - Asztali: Egyszerűsített számlák kiállítása és adatbázis tartalom automatikus módosítása
+  - **Webes:** Jelentések megjelenítése és adatbázis tartalom manuális módosítása.
+  - **Asztali:** Egyszerűsített számlák kiállítása és adatbázis tartalom automatikus módosítása.
 ## 4. Tesztelés és bevezetés
   ### Rendszer tesztelése:
   - Különböző esetek szimulálása (pl. áru beérkezés, eladás, rendelés).
@@ -50,9 +51,19 @@ Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuit�
   ### Felhasználók betanítása
   - Esetleges súgó opció implementálása
 ## 5. Eszközök és technológia
-  - Adatbázis: MySQL
-  - Backend nyelv: Node.js.
-  - Frontend keretrendszer: HTML/CSS/JavaScript (+Bootstrap)
-  - Számlagenerátor: C# .NET Windows Forms Application
+  - **Adatbázis:** MySQL
+  - **Backend:** Node.js, Express.
+  - **Frontend:** HTML/CSS (+Bootstrap)/JavaScript
+  - **Asztali applikáció:** C# .NET Windows Forms Application **--!! (BBCode)**
+  - **Projekt menedzsment:** Trello
+  - **Verziókezelés:** GitHub
+  - **Általános kommunikáció:** Microsoft Teams, Discord
+## 6. Munka elosztás és együttműködés
+   - **Hummel Vendel:** Natív asztali applikáció fejlesztése, tesztelése és dokumentálása, valamint a backend végpontok tesztelése
+   - **Hunka Róbert Emánuel:** Reszponzív webes felület fejlesztése, tesztelése és dokumentálása, valamint az adatbázis funkciók tesztelése
+   - **Közösen elvégzett feladatok:** Általános dokumentáció, adatbázis és backend végpontok kialakítása
+# Összegzés és további fejlesztési lehetőségek
 
-Készítők: Hummel Vendel, Hunka Róbert
+#### Fejlesztők:
+  - **Hummel Vendel**
+  - **Hunka Róbert Emánuel**

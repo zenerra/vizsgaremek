@@ -19,9 +19,12 @@ Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuit�
 - **Beszállító entitás:** kapcsolattartási e-mail cím tárolása.
   
 ### Adatmodell kialakítása:
-- **Termékek:** azonosító, név, kategória, ár, készletmennyiség, beszállító, korhatáros (logikai érték, igaz/hamis).
-- **Beszállítók:** név, cím, e-mail cím.
-- **Számlák:** dátum idő, vevő adatai, vásárolt tételek, összeg. **--!!**
+- **Termékek:** termék azonosítója, termék neve,termék kategóriája, termék ára (egységenként), készlet mennyiség, mennyiségi egység, beszállító azonosítója, korhatáros (logikai érték, igaz/hamis)
+- **Vásárlási tételétel:** számla / vásárlás azonosítója, termék azonosítója, vásárolt mennyiség
+- **Alkalmazottak:** alkalmazott azonosítója, alkalmazott munkaköre, alkalmazott neve, alkalmazott születési dátuma, alkalmazott belépésének dátuma, alkalmazott bére, alkalmazott hozzáférése a webes és natív asztali felületekhez
+- **Beszállítók:** beszállító azonosítója, beszállító neve, beszállító címének azonosítója, beszállító e-mail címe
+- **Címek:** cím azonosítója, ország, irányítószám, település, utca, házszám
+- **Számlák:** számla kiállítási dátuma és ideje, számla azonosítója, választott fizetési mód, üzlet címének azonosítója, pénztár azonosítója, eladó alkalmazott azonosítója
 ## 2. Fejlesztési folyamat
 ### Készletkezelés megvalósítása:
    - Termékek hozzáadása, szerkesztése és törlése.

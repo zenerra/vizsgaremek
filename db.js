@@ -112,7 +112,7 @@ export async function WUpdateTermek(termek) {
     ]);
     return result;
 }
-export async function Wszamlak()
+export async function WSzamlak()
 {
     const sql = `
     SELECT  sazon, skiallitas, sfizetesimod, spenztar, aazon, anev, scim, orszag, iranyitoszam, telepules, kozterulet, hazszam, mennyiseg, tnev, tar, tmennyisegiegyseg
@@ -128,35 +128,31 @@ export async function Wszamlak()
 
 
 
-export async function WUpdateSzamla(termek, tetel) {
-    const sql1 = `
+export async function WUpdateSzamla(termek, termek) {
+    const sql = `
     UPDATE szamla
-    SET szamla.skiallitas = ?, szamla.scim = ?, szamla.spenztar = ?, szamla.selado = ?, szamla.sfizetesimod = ? WHERE szamla.sazon = ?;`;
-    const sql2 = `
+    SET szamla.skiallitas = ?, szamla.scim = ?, szamla.spenztar = ?, szamla.selado = ?, szamla.sfizetesimod = ? WHERE szamla.sazon = ?;
     UPDATE tetel
     SET tetel.tazon = ?, tetel.mennyiseg = ? WHERE tetel.sazon = ? AND tetel.tazon = ?;`;
 
-    const [result1] = await connection.execute(
-    sql1, [
+    const [result] = await connection.execute(
+    sql, [
         termek.skillitas,           
         termek.scim,     
         termek.spenztar,            
         termek.selado,   
         termek.sfizetesimod, 
-        termek.sazon 
-        ]); 
-    
-    const [result2] = await connection.execute(
-    sql2, [
+        termek.sazon,
         tetel.tazon,
         tetel.mennyiseg,
         tetel.sazon,
-        tetel.tazon
-        ]);
+        tetel.tazon 
+        ]); 
     
-    return { szamla: result1, tetel: result2 };
+    
+    return result;
 }
-export async function Wmunkaadatok()
+export async function WMunkaAdatok()
 {
     const sql = `
     SELECT aazon, anev, abelepes, sazon, skiallitas 
@@ -166,7 +162,7 @@ export async function Wmunkaadatok()
     return result;
 } 
 
-export async function Wszamlaadatok()
+export async function WSzamlaAdatok()
 {
     const sql = `
     SELECT szamla.sazon, szamla.skiallitas, szamla.sfizetesimod FROM szamla WHERE 1;

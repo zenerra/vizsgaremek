@@ -67,6 +67,114 @@ export async function DUjTetel(sazon, tazon, mennyiseg) {
 //
 
 // Web Endpoints
+export async function WBelepes(id)
+{
+    let sql = 'SELECT aazon FROM alkalmazott WHERE aazon =  AND webjog IS TRUE;';
+    const [result] = await connection.execute(sql);
+    return result;
+}
+
+export async function WBelepes(id)
+{
+    let sql = `SELECT aazon FROM alkalmazott WHERE aazon = ? AND webjog IS TRUE;`;
+    const [result] = await connection.execute(sql, [id]);
+    return result;
+}
+
+export async function WTermekek()
+{
+    const sql = `
+    SELECT tazom, tnev, tkategoria, tar, tmennyiseg, tkoros, tmennyisegiegyseg, azon, bnev, bemail, orszag, iranyitoszam, telepules, kozterulet, hazszam 
+    FROM termek 
+    JOIN beszallito ON termek.bazon = beszallito.bazon 
+    JOIN cim ON beszallito.bcim = cim.cazon 
+    WHERE 1;
+`;
+    const [result] = await connection.execute(sql);
+    return result;
+}
+export async function WUpdateTermek(termek) {
+    const sql = `
+    UPDATE termek SET 
+        tnev = ?, tkategoria = ?, tar = ?, tmennyiseg = ?, tmennyisegiegyseg = ?, tkoros = ?, bazon = ?
+    WHERE 
+        tazon = ?;
+`;
+    const [result] = await connection.execute(sql, [
+        termek.tnev,           
+        termek.tkategoria,     
+        termek.tar,            
+        termek.tmennyiseg,   
+        termek.tmennyisegiegyseg, 
+        termek.tkoros,         
+        termek.bazon,          
+        termek.tazon           
+    ]);
+    return result;
+}
+export async function Wszamlak()
+{
+    const sql = `
+    SELECT  sazon, skiallitas, sfizetesimod, spenztar, aazon, anev, scim, orszag, iranyitoszam, telepules, kozterulet, hazszam, mennyiseg, tnev, tar, tmennyisegiegyseg
+    FROM cim
+    JOIN szamla ON cim.scim = szamla.cazon
+    JOIN alkalmazott ON szamla.selado = alkalmazott.aazon
+    JOIN tetel ON tetel.sazon = szamla.sazon 
+    JOIN termek ON termek.tazon = tetel.tazon
+    WHERE 1;
+`;  const [result] = await connection.execute(sql);
+    return result;
+} 
+
+
+
+export async function WUpdateSzamla(termek, tetel) {
+    const sql1 = `
+    UPDATE szamla
+    SET szamla.skiallitas = ?, szamla.scim = ?, szamla.spenztar = ?, szamla.selado = ?, szamla.sfizetesimod = ? WHERE szamla.sazon = ?;`;
+    const sql2 = `
+    UPDATE tetel
+    SET tetel.tazon = ?, tetel.mennyiseg = ? WHERE tetel.sazon = ? AND tetel.tazon = ?;`;
+
+    const [result1] = await connection.execute(
+    sql1, [
+        termek.skillitas,           
+        termek.scim,     
+        termek.spenztar,            
+        termek.selado,   
+        termek.sfizetesimod, 
+        termek.sazon 
+        ]); 
+    
+    const [result2] = await connection.execute(
+    sql2, [
+        tetel.tazon,
+        tetel.mennyiseg,
+        tetel.sazon,
+        tetel.tazon
+        ]);
+    
+    return { szamla: result1, tetel: result2 };
+}
+export async function Wmunkaadatok()
+{
+    const sql = `
+    SELECT aazon, anev, abelepes, sazon, skiallitas 
+    FROM alkalmazottak 
+    JOIN szamla ON alkalmazott.aazon = szamla.selado WHERE 1;
+`;  const [result] = await connection.execute(sql);
+    return result;
+} 
+
+export async function Wszamlaadatok()
+{
+    const sql = `
+    SELECT szamla.sazon, szamla.skiallitas, szamla.sfizetesimod FROM szamla WHERE 1;
+`;  const [result] = await connection.execute(sql);
+    return result;
+} 
+
+
 
 
 //

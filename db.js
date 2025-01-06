@@ -53,15 +53,15 @@ export async function DTermek(tazon) {
     return result;
 }
 
-export async function DUjSzamla(spenztar, selado, sfizetesimod) {
+export async function DUjSzamla(ujSzamla) {
     let sql = 'INSERT INTO szamla (szamla.spenztar, szamla.selado, szamla.sfizetesimod) VALUES (?, ?, ?)';
-    const [result] = await connection.execute(sql, [spenztar, selado, sfizetesimod]);
+    const [result] = await connection.execute(sql, [ujSzamla.spenztar, ujSzamla.selado, ujSzamla.sfizetesimod]);
     return result;
 }
 
-export async function DUjTetel(sazon, tazon, mennyiseg) {
+export async function DUjTetel(ujTetel) {
     let sql = 'INSERT INTO tetel (tetel.sazon, tetel.tazon, tetel.mennyiseg) VALUES (?, ?, ?)';
-    const [result] = await connection.execute(sql, [sazon, tazon, mennyiseg]);
+    const [result] = await connection.execute(sql, [ujTetel.sazon, ujTetel.tazon, ujTetel.mennyiseg]);
     return result;
 }
 //

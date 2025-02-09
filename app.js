@@ -5,11 +5,19 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-import routeDesktop from './routes/asztalivegpontok.js';
-app.use("/server/desktop", routeDesktop);
+import alkalmazott from './routes/alkalmazott.js';
+app.use("/server/alkalmazott", alkalmazott);
 
-import routeWeb from './routes/webvegpontok.js';
-app.use("/server/web", routeWeb);
+import szamla from './routes/szamla.js';
+app.use("/server/szamla", szamla);
+
+import termek from './routes/termek.js';
+app.use("/server/termek", termek);
+
+import tetel from './routes/tetel.js';
+app.use("/server/tetel", tetel);
+
+
 
 app.listen(3000, () => {
     console.log('A szerver elindult a http://localhost:3000 porton.');

@@ -1,6 +1,7 @@
 // Szükséges modulok importálása
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
+import e from 'express';
 //
 
 dotenv.config();
@@ -26,12 +27,6 @@ export async function DPenztarok()
 {
     let sql = 'SELECT DISTINCT szamla.spenztar FROM szamla WHERE 1';
     const [result] = await connection.execute(sql);
-    return result;
-}
-
-export async function DBelepes(aazon) {
-    let sql = 'SELECT alkalmazott.agepjog FROM alkalmazott WHERE aazon = ?';
-    const [result] = await connection.execute(sql, [aazon]);
     return result;
 }
 
@@ -66,20 +61,35 @@ export async function DUjTetel(ujTetel) {
 }
 //
 
+export async function Belepes(felulet, id)
+{
+    let sql;
+    if (felulet == "desktop") {
+        sql = 'SELECT alkalmazott.agepjog FROM alkalmazott WHERE aazon = ?';
+    }
+    else if (felulet == "web") {
+        sql = `SELECT aazon FROM alkalmazott WHERE aazon = ? AND webjog IS TRUE;`;
+    }
+    else{  
+        alert("Error"); 
+        return null;   
+    }
+    const [result] = await connection.execute(sql, [id]);
+    return result;
+}
+
 // Web Endpoints
+
+/* 
 export async function WBelepes(id)
 {
     let sql = 'SELECT aazon FROM alkalmazott WHERE aazon =  AND webjog IS TRUE;';
     const [result] = await connection.execute(sql);
     return result;
 }
+*/    
 
-export async function WBelepes(id)
-{
-    let sql = `SELECT aazon FROM alkalmazott WHERE aazon = ? AND webjog IS TRUE;`;
-    const [result] = await connection.execute(sql, [id]);
-    return result;
-}
+
 
 export async function WTermekek()
 {

@@ -55,8 +55,25 @@ export async function DUjSzamla(ujSzamla) {
 }
 
 export async function DUjTetel(ujTetel) {
-    let sql = 'INSERT INTO tetel (tetel.sazon, tetel.tazon, tetel.mennyiseg) VALUES (?, ?, ?)';
-    const [result] = await connection.execute(sql, [ujTetel.sazon, ujTetel.tazon, ujTetel.mennyiseg]);
+    let sql = `INSERT INTO tetel (tetel.sazon, tetel.tazon, tetel.mennyiseg) VALUES (?, ?, ?);
+    UPDATE termek SET termek.tmennyiseg = termek.tmennyiseg - ? WHERE termek.tazon = ?`;
+    const [result] = await connection.execute(sql, [ujTetel.sazon, ujTetel.tazon, ujTetel.mennyiseg, ujTetel.mennyiseg, ujTetel.tazon]);
+    
+    if (await connection.execute('SELECT IF(termek.tmennyiseg < termek.tminkeszlet, "true", "false") WHERE termek.tazon = ?', [ujTetel.tazon]) == "true") {
+        const [adatok] = await connection.execute('SELECT termek.tnev, termek.mennyiseg, termek.mennyisegiegyseg, termek.tminkeszlet, termek.trendeles, beszallito.bemail, beszallito.bnev FROM termek JOIN beszallito USING(bazon) WHERE termek.tazon = ?', [ujTetel.tazon])
+        console.log(`
+            \n
+            A(z) ${adatok[0]} -ból/-ből a készlet mennyiség elérte kritikus pontot! \n
+            Jelenlegi mennyiség: ${adatok[1]} ${adatok[2]} \n
+            Meghatározott határérték: ${adatok[3]} ${adatok[2]} \n \n
+            Új rendelés leadva ${adatok[4]} ${adatok[2]} ${adatok[0]} -ról/-ről a(z) ${adatok[5]} e-mail címre. \n \n
+            Beszállító kapcsolattartási adatai: \n
+            \t- Megnevezés: ${adatok[6]} \n
+            \t- E-mail cím: ${adatok[5]}
+        `);
+        await connection.execute('UPDATE termek SET termek.tmennyiseg = termek.tmennyiseg + termek.trendeles WHERE termek.tazon = ?', [ujTetel.tazon]);
+        
+    }
     return result;
 }
 //
@@ -88,8 +105,6 @@ export async function WBelepes(id)
     return result;
 }
 */    
-
-
 
 export async function WTermekek()
 {

@@ -1,0 +1,10 @@
+C:\Users\Judit\Downloads\mester\asztali\register\register\bin\Debug\register.exe.config
+C:\Users\Judit\Downloads\mester\asztali\register\register\bin\Debug\register.exe
+C:\Users\Judit\Downloads\mester\asztali\register\register\bin\Debug\register.pdb
+C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.AssemblyReference.cache
+C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.authentication.resources
+C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.Properties.Resources.resources
+C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.GenerateResource.cache
+C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.CoreCompileInputs.cache
+C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.exe
+C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.pdb

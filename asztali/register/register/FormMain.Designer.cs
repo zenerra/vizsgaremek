@@ -1,7 +1,7 @@
 ﻿
 namespace register
 {
-    partial class main
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.

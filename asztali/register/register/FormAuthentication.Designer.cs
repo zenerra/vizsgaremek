@@ -1,7 +1,7 @@
 ﻿
 namespace register
 {
-    partial class authentication
+    partial class formAuthentication
     {
         /// <summary>
         /// Required designer variable.
@@ -65,13 +65,13 @@ namespace register
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             // 
-            // authentication
+            // formAuthentication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.groupBox1);
-            this.Name = "authentication";
+            this.Name = "formAuthentication";
             this.Text = "Register";
             this.Load += new System.EventHandler(this.authentication_Load);
             this.groupBox1.ResumeLayout(false);

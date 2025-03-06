@@ -8,3 +8,16 @@ C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.csp
 C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.CoreCompileInputs.cache
 C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.exe
 C:\Users\Judit\Downloads\mester\asztali\register\register\obj\Debug\register.pdb
+C:\Users\humven278\Downloads\mester\asztali\register\register\bin\Debug\register.exe.config
+C:\Users\humven278\Downloads\mester\asztali\register\register\bin\Debug\register.exe
+C:\Users\humven278\Downloads\mester\asztali\register\register\bin\Debug\register.pdb
+C:\Users\humven278\Downloads\mester\asztali\register\register\bin\Debug\Newtonsoft.Json.dll
+C:\Users\humven278\Downloads\mester\asztali\register\register\bin\Debug\Newtonsoft.Json.xml
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.AssemblyReference.cache
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.Properties.Resources.resources
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.GenerateResource.cache
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.CoreCompileInputs.cache
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.csproj.CopyComplete
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.exe
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.pdb
+C:\Users\humven278\Downloads\mester\asztali\register\register\obj\Debug\register.formAuthentication.resources

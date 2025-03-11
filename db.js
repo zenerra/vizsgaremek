@@ -6,21 +6,23 @@ import e from 'express';
 
 dotenv.config();
 
+try{
 const connection = await mysql.createConnection({
     host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME || "db_nyilvantartas"
+    
 });
+console.log('Connected to the MySQL server.');
+}
+catch (error) {
+    console.error('Error connecting to MySQL:', error.message);
+    throw error;
+}
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the MySQL server: ' + err.stack);
-        return;
-    }
-    console.log('Connected to the MySQL server.');
-});
+
 
 // Desktop Endpoints
 export async function DPenztarok()
@@ -153,7 +155,7 @@ export async function WSzamlak()
 
 
 
-export async function WUpdateSzamla(termek, termek) {
+export async function WUpdateSzamla(termek, tetel) {
     const sql = `
     UPDATE szamla
     SET szamla.skiallitas = ?, szamla.scim = ?, szamla.spenztar = ?, szamla.selado = ?, szamla.sfizetesimod = ? WHERE szamla.sazon = ?;

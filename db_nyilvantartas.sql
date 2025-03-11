@@ -3,14 +3,20 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 10. 18:18
+-- Létrehozás ideje: 2025. Már 11. 19:16
 -- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- PHP verzió: 8.0.30
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Adatbázis: `db_nyilvantartas`
@@ -138,11 +144,11 @@ CREATE TABLE `szamla` (
 INSERT INTO `szamla` (`sazon`, `skiallitas`, `scim`, `spenztar`, `selado`, `sfizetesimod`) VALUES
 (1, '2024-03-10 08:15:32', 1, 1, 2, 'készpénz'),
 (2, '2024-03-10 08:45:12', 1, 2, 3, 'kártya'),
-(3, '2024-03-10 09:05:50', 1, 3, 4, 'készpénz'),
+(3, '2024-03-10 09:05:50', 1, 3, 4, 'kártya'),
 (4, '2024-03-10 09:35:27', 1, 1, 9, 'kártya'),
-(5, '2024-03-10 10:10:14', 1, 2, 12, 'készpénz'),
+(5, '2024-03-10 10:10:14', 1, 2, 12, 'kártya'),
 (6, '2024-03-10 10:40:49', 1, 3, 1, 'kártya'),
-(7, '2024-03-10 11:20:33', 1, 1, 2, 'készpénz'),
+(7, '2024-03-10 11:20:33', 1, 1, 2, 'kártya'),
 (8, '2024-03-10 12:00:20', 1, 2, 3, 'kártya'),
 (9, '2024-03-10 12:45:15', 1, 3, 4, 'készpénz'),
 (10, '2024-03-10 13:10:05', 1, 1, 9, 'kártya'),
@@ -433,3 +439,7 @@ ALTER TABLE `tetel`
   ADD CONSTRAINT `tetel - termek` FOREIGN KEY (`tazon`) REFERENCES `termek` (`tazon`) ON UPDATE CASCADE;
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

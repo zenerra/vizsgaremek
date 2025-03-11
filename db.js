@@ -5,22 +5,21 @@ import e from 'express';
 //
 
 dotenv.config();
-
-try{
 const connection = await mysql.createConnection({
     host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "",
-    database: process.env.DB_NAME || "db_nyilvantartas"
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || 'db_nyilvantartas'
     
 });
-console.log('Connected to the MySQL server.');
-}
-catch (error) {
-    console.error('Error connecting to MySQL:', error.message);
-    throw error;
-}
+connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to the MySQL server: ' + err.stack);
+        return;
+    }
+    console.log('Connected to the MySQL server.');
+});
 
 
 
@@ -111,7 +110,7 @@ export async function WBelepes(id)
 export async function WTermekek()
 {
     const sql = `
-    SELECT tazom, tnev, tkategoria, tar, tmennyiseg, tkoros, tmennyisegiegyseg, azon, bnev, bemail, orszag, iranyitoszam, telepules, kozterulet, hazszam 
+    SELECT tazon, tnev, tkategoria, tar, tmennyiseg, tkoros, tmennyisegiegyseg, aazon, bnev, bemail, orszag, iranyitoszam, telepules, kozterulet, hazszam 
     FROM termek 
     JOIN beszallito ON termek.bazon = beszallito.bazon 
     JOIN cim ON beszallito.bcim = cim.cazon 

@@ -1,0 +1,145 @@
+:root {
+    --backgroundcolor: #2E2D34;
+    --signaturecolor: #007DFC;
+    --white: #F5F5F5;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: var(--backgroundcolor);
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #151515;
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-list li {
+    margin-bottom: 1rem;
+}
+
+.nav-list li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--white);
+}
+
+.nav-list img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.nav-list p {
+    transition: margin-left 0.2s ease-in-out;
+}
+
+.nav-list p:hover {
+    margin-left: 10px;
+}
+
+#logo {
+    width: 12rem;
+    margin-bottom: 2rem;
+}
+
+.active a p {
+    color: var(--signaturecolor);
+}
+
+
+main {
+    flex: 1;
+    margin-left: 250px;
+    padding: 2rem;
+    color: var(--white);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+
+.tabsDiv {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tab {
+    flex: 1;
+    min-width: 250px;
+    background-color: #151515;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+
+@media (max-width: 1024px) {
+    nav {
+        width: 200px;
+    }
+    main {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .nav-list li a {
+        font-size: 1rem;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    #logo {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab {
+        width: 100%;
+    }
+}

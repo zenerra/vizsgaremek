@@ -4,7 +4,7 @@ const router = express.Router();
 
 export const routes = express.Router();
 
-router.get('belepes/:felulet/:aazon', async (req, res) => {
+router.get('/belepes/:felulet/:aazon', async (req, res) => {
     let access = await db.Belepes(req.params.felulet, req.params.aazon);
     if (access == null) {
         res.status(422).send();

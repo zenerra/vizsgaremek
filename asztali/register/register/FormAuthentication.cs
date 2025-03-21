@@ -16,22 +16,25 @@ namespace register
     
     public partial class formAuthentication : Form
     {
+        HttpClient client = new HttpClient();
         class Register
         {
             public int spenztar;
         }
+        class GepJog
+        {
+            public bool agepjog;
+        }
         async void  SetUpRegister()
         {
-            HttpClient client = new HttpClient();
             List<Register> registers = new List<Register>();
-            
             try
             {
                 HttpResponseMessage response = await client.GetAsync("http://localhost:3000/server/szamla/gepek");
                 if (response.IsSuccessStatusCode)
                 {
                     string jsonString = await response.Content.ReadAsStringAsync();
-                    registers = JsonConvert.DeserializeObject<List<Register>>(jsonString);//DeserializeObject<List<int>>(jsonString);
+                    registers = JsonConvert.DeserializeObject<List<Register>>(jsonString);
                 }
                 else
                 {
@@ -76,6 +79,54 @@ namespace register
             {
                 sr.Close();
             }
+        }
+
+        private async void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            string sId = textBoxUserId.Text;
+            int iId;
+
+            if (int.TryParse(sId, out iId))
+            {
+
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync($"http://localhost:3000/server/alkalmazott/belepes/desktop/{sId}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+                        List<GepJog> gepjog = JsonConvert.DeserializeObject<List<GepJog>>(jsonString);
+                        if (gepjog.Count < 1)
+                        {
+                            MessageBox.Show("Érvénytelen azonosító! Indok: Nincs ilyen azonosítójú alkalmazott.", "Figyelem!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        if (gepjog[0].agepjog)
+                        {
+                            FormMain main = new FormMain(iId);
+                            main.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Hozzáférés megtagadva!", "Figyelem!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hiba a lekérdezés során!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (HttpRequestException e2)
+                {
+                    MessageBox.Show(e2.Message, "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Érvénytelen azonosító! Indok: Karakter nem értelmezhető.", "Figyelem!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
     }
 }

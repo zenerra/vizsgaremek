@@ -34,3 +34,4 @@ C:\Users\humven278\Downloads\mester\vizsgaremek\asztali\register\register\obj\De
 C:\Users\humven278\Downloads\mester\vizsgaremek\asztali\register\register\obj\Debug\register.exe
 C:\Users\humven278\Downloads\mester\vizsgaremek\asztali\register\register\obj\Debug\register.pdb
 C:\Users\humven278\Downloads\mester\vizsgaremek\asztali\register\register\obj\Debug\register.formAuthentication.resources
+C:\Users\humven278\Downloads\mester\vizsgaremek\asztali\register\register\obj\Debug\register.FormMain.resources

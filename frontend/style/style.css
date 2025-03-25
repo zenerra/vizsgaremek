@@ -98,9 +98,11 @@ form{
 
 
 main {
+    box-sizing: border-box;
     min-height:55rem;
     flex: 1;
     margin-left: 18rem;
+    margin-right: 5rem;
     padding: 2rem;
     color: var(--white);
 }
@@ -253,6 +255,40 @@ input{
     height: 4rem;
     background-color: #fd2929;
 }
+.profile{
+    
+}
+.profile > img{
+
+    display: block;
+    margin: 0 auto;
+    width: 20rem;
+}
+
+
+.profile > h5{
+    text-align: center;
+}
+.profile > p, a{
+    
+    display: block;
+    width: 20rem;
+    padding-top: 0.6rem;
+    margin: 0 auto;
+  
+}
+.profilescontent{
+    margin: 0 auto;
+    max-width: 80rem;
+    min-height:55rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 25rem));
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    height: 100%;
+}
 
 #transactionstab{background-image: url(../images/transaction_icon.png); }
 #statisticstab{background-image: url(../images/statistics_pageicon.png);}
@@ -260,7 +296,11 @@ input{
 #logouttab{background-image: url(../images/logout_icon.svg); }
 
 @media (max-width: 1024px) {
-    
+    main {
+        margin-left: 16rem;
+        margin-right: 2rem;
+
+    }
     nav{
         width: 15rem;
     }
@@ -294,7 +334,7 @@ input{
 
     
     main {
-        margin-left: 12.5rem;
+        margin-left: 12rem;
         
         padding-right: 3rem;
     }
@@ -302,7 +342,11 @@ input{
 }
 
 @media (max-width: 480px) {
-   
+    main {
+        margin: 0 6.5rem 0 6.5rem;
+        
+        padding-right: 3rem;
+    }
     .tabsDiv > a {
         background-image: none !important;
    }
@@ -322,7 +366,7 @@ input{
         margin-left: 0;
     }
     nav{
-        width: 28%;
+        width: 7rem;
         padding-left: 0;
         
     }   

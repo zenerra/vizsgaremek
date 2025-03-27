@@ -92,7 +92,7 @@ form{
     margin-bottom: 2rem;
 }
 
-.active a p {
+.active p {
     color: var(--signaturecolor);
 }
 
@@ -113,7 +113,7 @@ main {
     padding: 1rem;
     background-color: #0A0A0A;
     color: var(--white);
-    font-size: 14px;
+    font-size: 0.9rem;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -256,7 +256,8 @@ input{
     background-color: #fd2929;
 }
 .profile{
-    
+    padding: 2rem;
+    border: var(--signaturecolor) 0.2rem solid;
 }
 .profile > img{
 
@@ -266,29 +267,35 @@ input{
 }
 
 
-.profile > h5{
+.profile > h4{
     text-align: center;
+    margin: 1rem;
 }
-.profile > p, a{
+.profile > p, .profile > a{
     
     display: block;
     width: 20rem;
-    padding-top: 0.6rem;
+    padding-top: 0.4rem;
     margin: 0 auto;
   
 }
 .profilescontent{
     margin: 0 auto;
     max-width: 80rem;
-    min-height:55rem;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 25rem));
     gap: 1rem;
     align-items: center;
     justify-content: center;
     color: var(--white);
-    height: 100%;
+    padding: 2rem 0 2rem 0;
+  
+  
+
 }
+
+
 
 #transactionstab{background-image: url(../images/transaction_icon.png); }
 #statisticstab{background-image: url(../images/statistics_pageicon.png);}

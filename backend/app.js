@@ -17,7 +17,9 @@ app.use("/server/termek", termek);
 import tetel from './routes/tetel.js';
 app.use("/server/tetel", tetel);
 
-
+app.use('/', (req, res) => {
+    res.send("A szerver szolgátatások elérhetőek.");
+});
 
 app.listen(3000, () => {
     console.log('A szerver elindult a http://localhost:3000 porton.');

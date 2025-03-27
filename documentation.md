@@ -91,6 +91,14 @@ Másolja be az alábbi fájlokat a `backend` mappából.
         termek.js
         tetel.js
 ```
+Hozzon létre egy `.env` fájlt az alábbi minta alapján és győződjön meg, hogy az adatbázis kacsolathoz megfelelő adatokat tartalmazzon.
+```env
+DB_PASSWORD=
+DB_PORT=3306
+DB_NAME=db_nyilvantartas
+DB_USER=root
+DB_HOST=localhost
+```
 Futtassa le a következő parancsokat.
 ```bash
 npm install

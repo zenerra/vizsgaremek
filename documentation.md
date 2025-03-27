@@ -64,7 +64,40 @@ Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuit�
   - **Projekt menedzsment:** Trello
   - **Verziókezelés:** GitHub
   - **Általános kommunikáció:** Microsoft Teams, Discord
-## 6. Munka elosztás és együttműködés
+## 6. Telepítés
+### 6.1 Adatbázis telepítése
+Importálja a `db_nyilvantartas.sql` nevű fájlt.
+### 6.2 Backend / Szerver telepítése
+Futtassa le az alábbi parancsokat egy parancsor ablakban.
+```bash
+mkdir vizsgaremek
+cd vizsgaremek
+mkdir backend
+cd backend
+```
+Másolja be az alábbi fájlokat a `backend` mappából.
+```
+│   app.js
+│   db.js
+│   db_nyilvantartas.sql
+│   package-lock.json
+│   package.json
+│
+└───routes
+        alkalmazott.js
+        beszallito.js
+        cim.js
+        szamla.js
+        termek.js
+        tetel.js
+```
+Futtassa le a következő parancsokat.
+```bash
+npm install
+node app.js
+```
+Elindult a szerver, amit a [Ez egy link](https://példa.hu){:target="_blank" rel="noopener noreferrer"} URL-en érhet el.
+## 7. Munka elosztás és együttműködés
    - **Hummel Vendel:** Natív asztali applikáció fejlesztése, tesztelése és dokumentálása, valamint a backend végpontok tesztelése
    - **Hunka Róbert Emánuel:** Reszponzív webes felület fejlesztése, tesztelése és dokumentálása, valamint az adatbázis funkciók tesztelése
    - **Közösen elvégzett feladatok:** Általános dokumentáció, adatbázis és backend végpontok kialakítása

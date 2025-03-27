@@ -96,7 +96,7 @@ Futtassa le a következő parancsokat.
 npm install
 node app.js
 ```
-Elindult a szerver, amit a [Ez egy link](https://példa.hu){:target="_blank" rel="noopener noreferrer"} URL-en érhet el.
+Elindult a szerver, amit a `http://localhost:3000/server` URL-en érhet el.
 ## 7. Munka elosztás és együttműködés
    - **Hummel Vendel:** Natív asztali applikáció fejlesztése, tesztelése és dokumentálása, valamint a backend végpontok tesztelése
    - **Hunka Róbert Emánuel:** Reszponzív webes felület fejlesztése, tesztelése és dokumentálása, valamint az adatbázis funkciók tesztelése

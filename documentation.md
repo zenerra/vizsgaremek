@@ -4,6 +4,9 @@ E bolti nyilvántartó szoftver egy modern, integrált rendszer, amely hatékony
 
 Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuitív felületen, amely lehetővé teszi a nyugták automatikus formázáésát. Az alkalmazás offline módban is működik, a raktári mozgásokat pedig valós időben szinkronizálja a webes felülettel, amikor elérhető az internetkapcsolat. A rendszer többfelhasználós működést támogat, különböző jogosultsági szintekkel, és biztosítja a tranzakciók, valamint az adatmódosítások naplózását. A szoftver rugalmasan testreszabható, felhasználóbarát kialakítása pedig megkönnyíti a mindennapi munkavégzést a boltvezetők és az alkalmazottak számára.
 
+* Program mukodesre birasa
+
+
 ## 1. Követelmények és tervezés
    ### Célok meghatározása:
    ### Felhasználói szerepkörök definiálása:

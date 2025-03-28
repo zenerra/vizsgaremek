@@ -4,6 +4,9 @@ E bolti nyilvántartó szoftver egy modern, integrált rendszer, amely hatékony
 
 Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuitív felületen, amely lehetővé teszi a nyugták automatikus formázáésát. Az alkalmazás offline módban is működik, a raktári mozgásokat pedig valós időben szinkronizálja a webes felülettel, amikor elérhető az internetkapcsolat. A rendszer többfelhasználós működést támogat, különböző jogosultsági szintekkel, és biztosítja a tranzakciók, valamint az adatmódosítások naplózását. A szoftver rugalmasan testreszabható, felhasználóbarát kialakítása pedig megkönnyíti a mindennapi munkavégzést a boltvezetők és az alkalmazottak számára.
 
+* Program mukodesre birasa
+
+
 ## 1. Követelmények és tervezés
    ### Célok meghatározása:
    ### Felhasználói szerepkörök definiálása:
@@ -61,7 +64,48 @@ Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuit�
   - **Projekt menedzsment:** Trello
   - **Verziókezelés:** GitHub
   - **Általános kommunikáció:** Microsoft Teams, Discord
-## 6. Munka elosztás és együttműködés
+## 6. Telepítés
+### 6.1 Adatbázis telepítése
+Importálja a `db_nyilvantartas.sql` nevű fájlt.
+### 6.2 Backend / Szerver telepítése
+Futtassa le az alábbi parancsokat egy parancsor ablakban.
+```bash
+mkdir vizsgaremek
+cd vizsgaremek
+mkdir backend
+cd backend
+```
+Másolja be az alábbi fájlokat a `backend` mappából.
+```
+│   app.js
+│   db.js
+│   db_nyilvantartas.sql
+│   package-lock.json
+│   package.json
+│
+└───routes
+        alkalmazott.js
+        beszallito.js
+        cim.js
+        szamla.js
+        termek.js
+        tetel.js
+```
+Hozzon létre egy `.env` fájlt az alábbi minta alapján és győződjön meg, hogy az adatbázis kacsolathoz megfelelő adatokat tartalmazzon.
+```env
+DB_PASSWORD=
+DB_PORT=3306
+DB_NAME=db_nyilvantartas
+DB_USER=root
+DB_HOST=localhost
+```
+Futtassa le a következő parancsokat.
+```bash
+npm install
+node app.js
+```
+Elindult a szerver, amit a `http://localhost:3000/server` URL-en érhet el.
+## 7. Munka elosztás és együttműködés
    - **Hummel Vendel:** Natív asztali applikáció fejlesztése, tesztelése és dokumentálása, valamint a backend végpontok tesztelése
    - **Hunka Róbert Emánuel:** Reszponzív webes felület fejlesztése, tesztelése és dokumentálása, valamint az adatbázis funkciók tesztelése
    - **Közösen elvégzett feladatok:** Általános dokumentáció, adatbázis és backend végpontok kialakítása

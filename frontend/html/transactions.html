@@ -67,11 +67,71 @@
             <th>Payment</th>
             <th>Register</th>
             <th>Cashier</th>
-            <th>Items Count</th>
-
-
+            <th>Items</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>2024-12-12 12:11:45</td>
+            <td>Kartya</td>
+            <td>1</td>
+            <td>4</td>
+            <td>Pieces<b>(3)</b></td>
+            <td><button>Edit</button></td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>2024-12-12 12:11:45</td>
+            <td>Kartya</td>
+            <td>1</td>
+            <td>4</td>
+            <td>Pieces<b>(3)</b></td>
+            <td><button>Edit</button></td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>2024-12-12 12:11:45</td>
+            <td>Kartya</td>
+            <td>1</td>
+            <td>4</td>
+            <td>Pieces<b>(21)</b></td>
+            <td><button>Edit</button></td>
         </tr>
     </table>
+
+    <div class="editdata">
+        <h2>Manipulate data</h2>
+        <form>
+            <div class="form-group">
+                <label for="amount">Amount (Ft)</label>
+                <input type="text" id="amount" value="15213" readonly>
+                <div class="button-group">
+                    <button type="button" class="cash-btn">Cash</button>
+                    <button type="button" class="card-btn">Card</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="datetime">Date and time</label>
+                <input type="text" id="datetime" value="2024-12-12 12:11:45" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="id">ID</label>
+                <input type="text" id="id" value="81230" readonly>
+                <div class="button-group">
+                    <button type="button" class="edit-btn">Edit</button>
+                    <button type="button" class="delete-btn">Delete</button>
+                </div>
+            </div>
+
+            <button type="button" class="add-btn">Add Transaction</button>
+        </form>
+    </div>
+       
+
+
+
 </main>
 
 

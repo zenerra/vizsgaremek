@@ -107,6 +107,17 @@ main {
     color: var(--white);
 }
 
+table{
+    background-color: #0A0A0A;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+}
+
+th{
+    padding: 0.8rem;
+    border-bottom: 0.1rem solid;
+}
+
 
 .footer {
     text-align: center;
@@ -159,17 +170,30 @@ input{
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    height: 3rem;
+
 }
 
-
-
-.login{
+button{
     
     width: 10rem;
     border-radius: 1.5rem;
-    background-color: var(--success) ;
     cursor: pointer;
+    background-color: #007DFC;
+    height: 3rem;
+    text-align: center;
+}
+
+td{
+    padding: 0.8rem;
+    border-bottom: var(--white) 0.1rem solid;
+}
+
+td>button{
+    margin-left: 2rem;
+
+}
+.login{
+    background-color: var(--success) ;
 }
 
 .help{

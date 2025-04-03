@@ -1,0 +1,18 @@
+Folder PATH listing for volume Windows
+Volume serial number is EE12-5244
+C:.
+³   app.js
+³   db.js
+³   db_nyilvantartas.sql
+³   package-lock.json
+³   package.json
+³   tree.txt
+³   
+ÀÄÄÄroutes
+        alkalmazott.js
+        beszallito.js
+        cim.js
+        szamla.js
+        termek.js
+        tetel.js
+        

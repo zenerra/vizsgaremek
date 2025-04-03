@@ -50,11 +50,11 @@ namespace register
             InitializeComponent();
             SetEmployee(id);
         }
-
-
         private void FormMain_Load(object sender, EventArgs e)
         {
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
     }
 }

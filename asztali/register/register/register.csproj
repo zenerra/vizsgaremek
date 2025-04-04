@@ -99,6 +99,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="authentication-16.ico" />
+    <None Include="Resources\Mainlogo.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\DesktopIcon.ico" />
     <None Include="Resources\authentication-16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

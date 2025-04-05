@@ -60,14 +60,178 @@
 
 <main>
     <h1>Products</h1>
+    <button class="add-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Create Product</a></button>
     <div class="tabsDiv">
-        <div class="tab">
-            Ads
+        <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
+        </div>
+        <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
+        </div>
+        <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
+        </div>
+        <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
+        </div>
+
+        <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
+        </div> <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
+        </div>
+        <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
+        </div>
+        <div class="tab card">
+            <h3>Bread (+18)</h3>
+            <p>Category: Bakery</p>
+            <p>500$</p>
+            <p>Stock: 340g</p>
+            <p>Product ID: 341</p>
+            <p>Supplier ID: 3</p>
+            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
+            <button class="delete-btn">Delete</button>
         </div>
         
-    </div>
-</main>
 
+
+        
+        
+    </div>
+    
+     <div class="editdata" id="edititem">
+        
+       
+        <form>
+            <h2>Manipulate database</h2>
+            <div class="form-group">
+                <label for="product name">Product name</label>
+                <input type="text" maxlength="100" id="productname" placeholder="Aa">
+                
+
+                
+            </div>
+
+            <div class="form-group">
+                    <label for="product name">Adult product?</label>
+                    <input type="checkbox" class="checkbox"></input>
+                    
+            </div>
+
+            <div class="form-group">
+                <label for="product name">Category</label>
+                <select name="categories" id="categories">
+                    <option value="pekáru">Pékáru</option>
+                    <option value="tejtermék">Tejtermék</option>
+                    <option value="szeszesital">Szeszesital</option>
+                    <option value="italok">Italok</option>
+                    <option value="gyümölcs">Gyümölcs</option>
+                    <option value="húsáru">Húsáru</option>
+                    <option value="zöldség">Zöldség</option>
+                    <option value="fagyasztott">Fagyasztott</option>
+                    <option value="konzervek">Konzervek</option>
+                    <option value="édesség">Édesség</option>
+                    <option value="háztartás">Háztartás</option>
+                    <option value="személyes_higiénia">Személyes higiénia</option>
+                    <option value="gyógyszer">Gyógyszer</option>
+                    <option value="egyéb">Egyéb</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" placeholder="0 HUF">
+
+                <label for="price">Stock</label>
+                <input type="number" id="Stock" placeholder="The amount in stock">
+                <label for="price">Unit:</label>
+                <select name="units" id="units">
+                    <option value="pcs">Piece</option>
+                    <option value="litre">Litre</option>
+                    <option value="ml">Mililitre</option>
+                    <option value="kg">Kilogram</option>
+                    <option value="gram">Gram</option>
+
+                    
+                  </select> 
+
+            </div>
+
+            <div class="form-group">
+                <label for="product id">Product ID</label>
+                <input type="number" id="productid" placeholder="ID of the product">
+
+                <label for="supplier id">Supplier ID</label>
+                <input type="number" id="supplierid" placeholder="ID of the supplier">
+
+                <div class="button-group">
+                    <button type="button" class="edit-btn">Edit</button>
+                    <button type="button" class="delete-btn">Delete</button>
+                </div>
+            </div>
+
+            <button type="button" class="add-btn">Add Product</button>
+        </form>
+    </div>
+       
+</main>
+<footer class="footer">
+
+
+
+    <p>2025 - <a href="../html/main.html">return</a></p>
+   <!--<a href="https://github.com/zenerra/mesterremek">                     @mesterremek</a>  --> 
+</footer>
 
 
 

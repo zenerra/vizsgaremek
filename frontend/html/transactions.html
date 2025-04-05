@@ -159,11 +159,12 @@
 
         
         <form>
-            <h3>Manipulate data</h3>
+            <h3>Manipulate database</h3>
             <div class="form-group">
                 <label for="amount">Amount (Ft)</label>
-                <input type="text" id="amount">
+                <input type="number" id="amount" >
                 <div class="button-group">
+                    <label for="amount">Payment Method</label>
                     <button type="button" class="cash-btn">Cash</button>
                     <button type="button" class="card-btn">Card</button>
                 </div>
@@ -172,11 +173,17 @@
             <div class="form-group">
                 <label for="datetime">Date and time</label>
                 <input type="datetime-local" step=1 name="dateinput" >
+                
+                <label for="cashier">Register</label>
+                <input type="number" id="register" placeholder="ID of the register">
+                <label for="cashier">Cashier</label>
+                <input type="number" id="cashier" placeholder="ID of the cashier">
+                
             </div>
-
+            
             <div class="form-group">
-                <label for="id">ID</label>
-                <input type="text" id="id">
+                <label for="id">Transaction ID</label>
+            <input type="number" id="id" placeholder="ID of the transaction">
                 <div class="button-group">
                     <button type="button" id class="edit-btn">Edit</button>
                     <button type="button" class="delete-btn">Delete</button>

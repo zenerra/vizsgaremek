@@ -161,19 +161,19 @@ INSERT INTO `szamla` (`sazon`, `skiallitas`, `scim`, `spenztar`, `selado`, `sfiz
 -- Tábla szerkezet ehhez a táblához `termek`
 --
 
-DROP TABLE IF EXISTS `termek`;
-CREATE TABLE `termek` (
-  `tazon` bigint(20) UNSIGNED NOT NULL COMMENT 'Termékek azonosítója',
-  `tnev` varchar(100) NOT NULL COMMENT 'Termék neve ',
-  `tkategoria` varchar(50) NOT NULL COMMENT 'Termék kategóriája',
-  `tar` int(10) UNSIGNED NOT NULL COMMENT 'Termék egységenkénti ára',
-  `tmennyiseg` double UNSIGNED NOT NULL COMMENT 'Készletmennyiség',
-  `tmennyisegiegyseg` varchar(10) NOT NULL DEFAULT 'db' COMMENT 'Termék mennyiségi egysége (pl db,kg)',
-  `tminkeszlet` double UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Az a minimum készletmennyiség ami alatt rendelni kell az adott termékből.',
-  `trendeles` double UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Az a mennyiség ami alkalmankéntrendelésre kerül az adott termékből.',
-  `tkoros` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Nagykorúsághoz kötött-e a termék',
-  `bazon` bigint(20) UNSIGNED NOT NULL COMMENT 'Termék beszállítójának azonosítója'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci COMMENT='termékek adatai';
+  DROP TABLE IF EXISTS `termek`;
+  CREATE TABLE `termek` (
+    `tazon` bigint(20) UNSIGNED NOT NULL COMMENT 'Termékek azonosítója',
+    `tnev` varchar(100) NOT NULL COMMENT 'Termék neve ',
+    `tkategoria` varchar(50) NOT NULL COMMENT 'Termék kategóriája',
+    `tar` int(10) UNSIGNED NOT NULL COMMENT 'Termék egységenkénti ára',
+    `tmennyiseg` double UNSIGNED NOT NULL COMMENT 'Készletmennyiség',
+    `tmennyisegiegyseg` varchar(10) NOT NULL DEFAULT 'db' COMMENT 'Termék mennyiségi egysége (pl db,kg)',
+    `tminkeszlet` double UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Az a minimum készletmennyiség ami alatt rendelni kell az adott termékből.',
+    `trendeles` double UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Az a mennyiség ami alkalmankéntrendelésre kerül az adott termékből.',
+    `tkoros` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Nagykorúsághoz kötött-e a termék',
+    `bazon` bigint(20) UNSIGNED NOT NULL COMMENT 'Termék beszállítójának azonosítója'
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci COMMENT='termékek adatai';
 
 --
 -- A tábla adatainak kiíratása `termek`

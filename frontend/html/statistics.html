@@ -6,9 +6,10 @@
     <link rel="icon" type="image/x-icon" href="../images/MainIcon.png">
     <link rel="stylesheet" href="../style/style.css">
     <title>Billing System</title>
-    <script src="script.js" defer></script>
-    
-  
+    <script src="../script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 </head>
 <body>
   
@@ -61,30 +62,137 @@
 <main>
     <h1>Statistics</h1>
     <div class="tabsDiv">
-        <div class="tab">
-            Latest Transactions
-        </div>
-        <div class="tab">
-
-        </div>
-    </div>
-</main>
-
-
-
-
-
-
-
-
-    
-   
-  
         
+        <div>
+            <h3>Cashiers' performace</h3>
+            <canvas id="cashiersperformance"></canvas>
+            <p>Cashier employees: </p>
+            <li>Nagy Janos</li>
+            <li>Kis Bela</li>
+            <li>Szechenyi Izabella</li>
+            <li>Nagy Janos</li>
+            <li>Kis Bela</li>
+            <li>Szechenyi Izabella</li>
+            <li>Nagy Janos</li>
+            <li>Kis Bela</li>
+            <li>Szechenyi Izabella</li>
+            <li>Nagy Janos</li>
+            <li>Kis Bela</li>
+          
+            
 
+        </div>
+        <div>
+            <h3>Payment Method Preference</h3>
+            <canvas id="paymentpreference"></canvas>
+        </div>
+        
+        
+    </div>
+    <h3>Sales Over the Last 12 Months</h3>
+    <canvas id="monthlysales"></canvas>
    
-    
+    <p>Charts were created using Chart.JS</p>   
+</main>
+<footer class="footer">
+    <p>2025 - <a href="../html/aboutus.html">About us</a></p>
+   <!--<a href="https://github.com/zenerra/mesterremek">                     @mesterremek</a>  --> 
+</footer>
 
-    
+<script>
+    const cashierPerformace = document.getElementById('cashiersperformance');
+    const paymentPreference = document.getElementById('paymentpreference');
+    const monthlySales = document.getElementById('monthlysales');
+
+    new Chart(cashierPerformace, {
+      type: 'bar',
+      
+      data: {
+        labels: ['Nagy Janos', 'Kis Bela', 'Szechenyi Izabella'],
+        datasets: [{
+          label: '# number of recipts issued this year per employee',
+          data: [12, 19, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+       
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    new Chart(paymentPreference, {
+  type: 'pie',
+  data: {
+    labels: ['Cash', 'Credit Card'],
+    datasets: [{
+      label: 'payment method preference',
+      data: [25, 40],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 206, 86, 0.6)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+     
+    }
+  }
+});
+
+new Chart(monthlySales, {
+  type: 'line',
+  data: {
+    labels: [
+      'April', 'May', 'June', 'July', 'August', 'September',
+      'October', 'November', 'December', 'January', 'February', 'March'
+    ],
+    datasets: [{
+      label: 'Monthly Sales (in HUF)',
+      data: [1200, 1500, 1700, 1400, 1800, 2200, 2100, 2500, 2300, 2400, 2600, 2800],
+      fill: true,
+      borderColor: 'rgba(75, 192, 192, 1)',
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      tension: 0.3,
+      pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+      pointRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+     
+    },
+    scales: {
+      y: {
+        beginAtZero: false
+      }
+    }
+  }
+});
+  
+  </script>
+  
 </body>
+
+
 </html>

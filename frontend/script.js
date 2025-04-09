@@ -1,3 +1,4 @@
+console.log('A szerver aktiv a http://localhost:3000 porton.');
 
 document.querySelector('.helptext').style.display = 'none';
 
@@ -10,5 +11,3 @@ document.querySelector('.help').addEventListener('mouseout', function() {
 });
 
 
-
-console.log("Test");

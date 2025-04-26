@@ -35,25 +35,33 @@ namespace register
             this.labelRegister = new System.Windows.Forms.Label();
             this.panelFooter = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.labelProductId = new System.Windows.Forms.Label();
-            this.comboBoxProductId = new System.Windows.Forms.ComboBox();
-            this.labelCategory = new System.Windows.Forms.Label();
-            this.labelProduct = new System.Windows.Forms.Label();
-            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
-            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
-            this.labelProductWarning = new System.Windows.Forms.Label();
-            this.labelPricePerUnit = new System.Windows.Forms.Label();
-            this.labelPricePerUnitDisplay = new System.Windows.Forms.Label();
-            this.labelQuantity = new System.Windows.Forms.Label();
-            this.numericUpDownQuantity = new System.Windows.Forms.NumericUpDown();
-            this.labelSum = new System.Windows.Forms.Label();
-            this.labelSumDisplay = new System.Windows.Forms.Label();
-            this.checkBoxItemWarning = new System.Windows.Forms.CheckBox();
             this.buttonAddItem = new System.Windows.Forms.Button();
+            this.checkBoxItemWarning = new System.Windows.Forms.CheckBox();
+            this.labelSumDisplay = new System.Windows.Forms.Label();
+            this.labelSum = new System.Windows.Forms.Label();
+            this.numericUpDownQuantity = new System.Windows.Forms.NumericUpDown();
+            this.labelQuantity = new System.Windows.Forms.Label();
+            this.labelPricePerUnitDisplay = new System.Windows.Forms.Label();
+            this.labelPricePerUnit = new System.Windows.Forms.Label();
+            this.labelProductWarning = new System.Windows.Forms.Label();
+            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.labelProduct = new System.Windows.Forms.Label();
+            this.labelCategory = new System.Windows.Forms.Label();
+            this.comboBoxProductId = new System.Windows.Forms.ComboBox();
+            this.labelProductId = new System.Windows.Forms.Label();
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.listBoxItems = new System.Windows.Forms.ListBox();
+            this.groupBoxTotal = new System.Windows.Forms.GroupBox();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.buttonDeleteLastItem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).BeginInit();
+            this.panelMain.SuspendLayout();
+            this.groupBoxTotal.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxLogo
@@ -122,130 +130,56 @@ namespace register
             this.panelLeft.Size = new System.Drawing.Size(500, 848);
             this.panelLeft.TabIndex = 4;
             // 
-            // labelProductId
+            // buttonAddItem
             // 
-            this.labelProductId.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelProductId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelProductId.Location = new System.Drawing.Point(40, 40);
-            this.labelProductId.Margin = new System.Windows.Forms.Padding(0);
-            this.labelProductId.Name = "labelProductId";
-            this.labelProductId.Size = new System.Drawing.Size(200, 50);
-            this.labelProductId.TabIndex = 0;
-            this.labelProductId.Text = "Termék azonosító:";
-            this.labelProductId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAddItem.AutoSize = true;
+            this.buttonAddItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(125)))), ((int)(((byte)(252)))));
+            this.buttonAddItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAddItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonAddItem.Location = new System.Drawing.Point(260, 768);
+            this.buttonAddItem.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAddItem.Name = "buttonAddItem";
+            this.buttonAddItem.Size = new System.Drawing.Size(200, 40);
+            this.buttonAddItem.TabIndex = 15;
+            this.buttonAddItem.Text = "Tétel hozzáadása";
+            this.buttonAddItem.UseVisualStyleBackColor = false;
             // 
-            // comboBoxProductId
+            // checkBoxItemWarning
             // 
-            this.comboBoxProductId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxProductId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.comboBoxProductId.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxProductId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBoxProductId.FormattingEnabled = true;
-            this.comboBoxProductId.Location = new System.Drawing.Point(40, 90);
-            this.comboBoxProductId.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxProductId.Name = "comboBoxProductId";
-            this.comboBoxProductId.Size = new System.Drawing.Size(420, 50);
-            this.comboBoxProductId.TabIndex = 1;
-            this.comboBoxProductId.SelectedIndexChanged += new System.EventHandler(this.comboBoxProductId_SelectedIndexChanged);
+            this.checkBoxItemWarning.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxItemWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxItemWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(171)))), ((int)(((byte)(42)))));
+            this.checkBoxItemWarning.Location = new System.Drawing.Point(40, 698);
+            this.checkBoxItemWarning.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxItemWarning.Name = "checkBoxItemWarning";
+            this.checkBoxItemWarning.Size = new System.Drawing.Size(420, 50);
+            this.checkBoxItemWarning.TabIndex = 14;
+            this.checkBoxItemWarning.Text = "A tételhez megerősítés szükséges!";
+            this.checkBoxItemWarning.UseVisualStyleBackColor = true;
             // 
-            // labelCategory
+            // labelSumDisplay
             // 
-            this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelCategory.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelCategory.Location = new System.Drawing.Point(40, 160);
-            this.labelCategory.Margin = new System.Windows.Forms.Padding(0);
-            this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(200, 50);
-            this.labelCategory.TabIndex = 2;
-            this.labelCategory.Text = "Kategória:";
-            this.labelCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelSumDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelSumDisplay.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelSumDisplay.Location = new System.Drawing.Point(160, 530);
+            this.labelSumDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.labelSumDisplay.Name = "labelSumDisplay";
+            this.labelSumDisplay.Size = new System.Drawing.Size(300, 50);
+            this.labelSumDisplay.TabIndex = 12;
+            this.labelSumDisplay.Text = "6 000 Ft";
+            this.labelSumDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelProduct
+            // labelSum
             // 
-            this.labelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelProduct.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelProduct.Location = new System.Drawing.Point(260, 160);
-            this.labelProduct.Margin = new System.Windows.Forms.Padding(0);
-            this.labelProduct.Name = "labelProduct";
-            this.labelProduct.Size = new System.Drawing.Size(200, 50);
-            this.labelProduct.TabIndex = 3;
-            this.labelProduct.Text = "Termék:";
-            this.labelProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // comboBoxCategory
-            // 
-            this.comboBoxCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxCategory.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(40, 210);
-            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(200, 50);
-            this.comboBoxCategory.TabIndex = 4;
-            // 
-            // comboBoxProduct
-            // 
-            this.comboBoxProduct.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.comboBoxProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxProduct.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBoxProduct.FormattingEnabled = true;
-            this.comboBoxProduct.Location = new System.Drawing.Point(260, 210);
-            this.comboBoxProduct.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxProduct.Name = "comboBoxProduct";
-            this.comboBoxProduct.Size = new System.Drawing.Size(200, 50);
-            this.comboBoxProduct.TabIndex = 5;
-            // 
-            // labelProductWarning
-            // 
-            this.labelProductWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelProductWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(171)))), ((int)(((byte)(42)))));
-            this.labelProductWarning.Location = new System.Drawing.Point(260, 260);
-            this.labelProductWarning.Margin = new System.Windows.Forms.Padding(0);
-            this.labelProductWarning.Name = "labelProductWarning";
-            this.labelProductWarning.Size = new System.Drawing.Size(200, 20);
-            this.labelProductWarning.TabIndex = 6;
-            this.labelProductWarning.Text = "Figyelem, a termék korosztályhoz kötött!";
-            this.labelProductWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelPricePerUnit
-            // 
-            this.labelPricePerUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPricePerUnit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelPricePerUnit.Location = new System.Drawing.Point(40, 280);
-            this.labelPricePerUnit.Margin = new System.Windows.Forms.Padding(0);
-            this.labelPricePerUnit.Name = "labelPricePerUnit";
-            this.labelPricePerUnit.Size = new System.Drawing.Size(200, 50);
-            this.labelPricePerUnit.TabIndex = 7;
-            this.labelPricePerUnit.Text = "Egységár:";
-            this.labelPricePerUnit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelPricePerUnitDisplay
-            // 
-            this.labelPricePerUnitDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPricePerUnitDisplay.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelPricePerUnitDisplay.Location = new System.Drawing.Point(160, 300);
-            this.labelPricePerUnitDisplay.Margin = new System.Windows.Forms.Padding(0);
-            this.labelPricePerUnitDisplay.Name = "labelPricePerUnitDisplay";
-            this.labelPricePerUnitDisplay.Size = new System.Drawing.Size(300, 50);
-            this.labelPricePerUnitDisplay.TabIndex = 8;
-            this.labelPricePerUnitDisplay.Text = "2 000 Ft / Kg";
-            this.labelPricePerUnitDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelQuantity
-            // 
-            this.labelQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelQuantity.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelQuantity.Location = new System.Drawing.Point(40, 390);
-            this.labelQuantity.Margin = new System.Windows.Forms.Padding(0);
-            this.labelQuantity.Name = "labelQuantity";
-            this.labelQuantity.Size = new System.Drawing.Size(200, 50);
-            this.labelQuantity.TabIndex = 9;
-            this.labelQuantity.Text = "Mennyiség:";
-            this.labelQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelQuantity.Click += new System.EventHandler(this.label2_Click);
+            this.labelSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelSum.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelSum.Location = new System.Drawing.Point(40, 510);
+            this.labelSum.Margin = new System.Windows.Forms.Padding(0);
+            this.labelSum.Name = "labelSum";
+            this.labelSum.Size = new System.Drawing.Size(200, 50);
+            this.labelSum.TabIndex = 11;
+            this.labelSum.Text = "Összeg:";
+            this.labelSum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // numericUpDownQuantity
             // 
@@ -270,56 +204,201 @@ namespace register
             0,
             0});
             // 
-            // labelSum
+            // labelQuantity
             // 
-            this.labelSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelSum.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelSum.Location = new System.Drawing.Point(40, 510);
-            this.labelSum.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSum.Name = "labelSum";
-            this.labelSum.Size = new System.Drawing.Size(200, 50);
-            this.labelSum.TabIndex = 11;
-            this.labelSum.Text = "Összeg:";
-            this.labelSum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelQuantity.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelQuantity.Location = new System.Drawing.Point(40, 390);
+            this.labelQuantity.Margin = new System.Windows.Forms.Padding(0);
+            this.labelQuantity.Name = "labelQuantity";
+            this.labelQuantity.Size = new System.Drawing.Size(200, 50);
+            this.labelQuantity.TabIndex = 9;
+            this.labelQuantity.Text = "Mennyiség:";
+            this.labelQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelSumDisplay
+            // labelPricePerUnitDisplay
             // 
-            this.labelSumDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelSumDisplay.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelSumDisplay.Location = new System.Drawing.Point(160, 530);
-            this.labelSumDisplay.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSumDisplay.Name = "labelSumDisplay";
-            this.labelSumDisplay.Size = new System.Drawing.Size(300, 50);
-            this.labelSumDisplay.TabIndex = 12;
-            this.labelSumDisplay.Text = "6 000 Ft";
-            this.labelSumDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelPricePerUnitDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPricePerUnitDisplay.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelPricePerUnitDisplay.Location = new System.Drawing.Point(160, 300);
+            this.labelPricePerUnitDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.labelPricePerUnitDisplay.Name = "labelPricePerUnitDisplay";
+            this.labelPricePerUnitDisplay.Size = new System.Drawing.Size(300, 50);
+            this.labelPricePerUnitDisplay.TabIndex = 8;
+            this.labelPricePerUnitDisplay.Text = "2 000 Ft / Kg";
+            this.labelPricePerUnitDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // checkBoxItemWarning
+            // labelPricePerUnit
             // 
-            this.checkBoxItemWarning.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxItemWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxItemWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(171)))), ((int)(((byte)(42)))));
-            this.checkBoxItemWarning.Location = new System.Drawing.Point(40, 698);
-            this.checkBoxItemWarning.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxItemWarning.Name = "checkBoxItemWarning";
-            this.checkBoxItemWarning.Size = new System.Drawing.Size(420, 50);
-            this.checkBoxItemWarning.TabIndex = 14;
-            this.checkBoxItemWarning.Text = "A tételhez megerősítés szükséges!";
-            this.checkBoxItemWarning.UseVisualStyleBackColor = true;
+            this.labelPricePerUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPricePerUnit.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelPricePerUnit.Location = new System.Drawing.Point(40, 280);
+            this.labelPricePerUnit.Margin = new System.Windows.Forms.Padding(0);
+            this.labelPricePerUnit.Name = "labelPricePerUnit";
+            this.labelPricePerUnit.Size = new System.Drawing.Size(200, 50);
+            this.labelPricePerUnit.TabIndex = 7;
+            this.labelPricePerUnit.Text = "Egységár:";
+            this.labelPricePerUnit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // buttonAddItem
+            // labelProductWarning
             // 
-            this.buttonAddItem.AutoSize = true;
-            this.buttonAddItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(125)))), ((int)(((byte)(252)))));
-            this.buttonAddItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAddItem.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonAddItem.Location = new System.Drawing.Point(260, 768);
-            this.buttonAddItem.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonAddItem.Name = "buttonAddItem";
-            this.buttonAddItem.Size = new System.Drawing.Size(200, 40);
-            this.buttonAddItem.TabIndex = 15;
-            this.buttonAddItem.Text = "Tétel hozzáadása";
-            this.buttonAddItem.UseVisualStyleBackColor = false;
+            this.labelProductWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelProductWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(171)))), ((int)(((byte)(42)))));
+            this.labelProductWarning.Location = new System.Drawing.Point(260, 260);
+            this.labelProductWarning.Margin = new System.Windows.Forms.Padding(0);
+            this.labelProductWarning.Name = "labelProductWarning";
+            this.labelProductWarning.Size = new System.Drawing.Size(200, 20);
+            this.labelProductWarning.TabIndex = 6;
+            this.labelProductWarning.Text = "Figyelem, a termék korosztályhoz kötött!";
+            this.labelProductWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxProduct
+            // 
+            this.comboBoxProduct.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.comboBoxProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxProduct.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBoxProduct.FormattingEnabled = true;
+            this.comboBoxProduct.Location = new System.Drawing.Point(260, 210);
+            this.comboBoxProduct.Margin = new System.Windows.Forms.Padding(0);
+            this.comboBoxProduct.Name = "comboBoxProduct";
+            this.comboBoxProduct.Size = new System.Drawing.Size(200, 50);
+            this.comboBoxProduct.TabIndex = 5;
+            // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxCategory.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(40, 210);
+            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(200, 50);
+            this.comboBoxCategory.TabIndex = 4;
+            // 
+            // labelProduct
+            // 
+            this.labelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelProduct.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelProduct.Location = new System.Drawing.Point(260, 160);
+            this.labelProduct.Margin = new System.Windows.Forms.Padding(0);
+            this.labelProduct.Name = "labelProduct";
+            this.labelProduct.Size = new System.Drawing.Size(200, 50);
+            this.labelProduct.TabIndex = 3;
+            this.labelProduct.Text = "Termék:";
+            this.labelProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCategory
+            // 
+            this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelCategory.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelCategory.Location = new System.Drawing.Point(40, 160);
+            this.labelCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.labelCategory.Name = "labelCategory";
+            this.labelCategory.Size = new System.Drawing.Size(200, 50);
+            this.labelCategory.TabIndex = 2;
+            this.labelCategory.Text = "Kategória:";
+            this.labelCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxProductId
+            // 
+            this.comboBoxProductId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxProductId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.comboBoxProductId.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxProductId.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBoxProductId.FormattingEnabled = true;
+            this.comboBoxProductId.Location = new System.Drawing.Point(40, 90);
+            this.comboBoxProductId.Margin = new System.Windows.Forms.Padding(0);
+            this.comboBoxProductId.Name = "comboBoxProductId";
+            this.comboBoxProductId.Size = new System.Drawing.Size(420, 50);
+            this.comboBoxProductId.TabIndex = 1;
+            // 
+            // labelProductId
+            // 
+            this.labelProductId.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelProductId.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelProductId.Location = new System.Drawing.Point(40, 40);
+            this.labelProductId.Margin = new System.Windows.Forms.Padding(0);
+            this.labelProductId.Name = "labelProductId";
+            this.labelProductId.Size = new System.Drawing.Size(200, 50);
+            this.labelProductId.TabIndex = 0;
+            this.labelProductId.Text = "Termék azonosító:";
+            this.labelProductId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panelRight
+            // 
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelRight.Location = new System.Drawing.Point(1424, 113);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(500, 848);
+            this.panelRight.TabIndex = 5;
+            // 
+            // panelMain
+            // 
+            this.panelMain.Controls.Add(this.buttonDeleteLastItem);
+            this.panelMain.Controls.Add(this.groupBoxTotal);
+            this.panelMain.Controls.Add(this.listBoxItems);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(500, 113);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(924, 848);
+            this.panelMain.TabIndex = 6;
+            // 
+            // listBoxItems
+            // 
+            this.listBoxItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.listBoxItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listBoxItems.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.listBoxItems.FormattingEnabled = true;
+            this.listBoxItems.ItemHeight = 31;
+            this.listBoxItems.Location = new System.Drawing.Point(20, 0);
+            this.listBoxItems.Margin = new System.Windows.Forms.Padding(0);
+            this.listBoxItems.Name = "listBoxItems";
+            this.listBoxItems.Size = new System.Drawing.Size(884, 593);
+            this.listBoxItems.TabIndex = 0;
+            // 
+            // groupBoxTotal
+            // 
+            this.groupBoxTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.groupBoxTotal.Controls.Add(this.labelTotal);
+            this.groupBoxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBoxTotal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxTotal.Location = new System.Drawing.Point(20, 648);
+            this.groupBoxTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBoxTotal.Name = "groupBoxTotal";
+            this.groupBoxTotal.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBoxTotal.Size = new System.Drawing.Size(884, 200);
+            this.groupBoxTotal.TabIndex = 1;
+            this.groupBoxTotal.TabStop = false;
+            this.groupBoxTotal.Text = " Végösszeg:";
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 100F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTotal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelTotal.Location = new System.Drawing.Point(1, 28);
+            this.labelTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(882, 170);
+            this.labelTotal.TabIndex = 13;
+            this.labelTotal.Text = "11 550 Ft";
+            this.labelTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonDeleteLastItem
+            // 
+            this.buttonDeleteLastItem.AutoSize = true;
+            this.buttonDeleteLastItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.buttonDeleteLastItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDeleteLastItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonDeleteLastItem.Location = new System.Drawing.Point(604, 600);
+            this.buttonDeleteLastItem.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonDeleteLastItem.Name = "buttonDeleteLastItem";
+            this.buttonDeleteLastItem.Size = new System.Drawing.Size(300, 40);
+            this.buttonDeleteLastItem.TabIndex = 16;
+            this.buttonDeleteLastItem.Text = "Utolsó tétel törlése";
+            this.buttonDeleteLastItem.UseVisualStyleBackColor = false;
             // 
             // FormMain
             // 
@@ -327,6 +406,8 @@ namespace register
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(45)))), ((int)(((byte)(52)))));
             this.ClientSize = new System.Drawing.Size(1924, 1061);
+            this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelFooter);
             this.Controls.Add(this.panelHeader);
@@ -340,6 +421,9 @@ namespace register
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).EndInit();
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
+            this.groupBoxTotal.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,5 +450,11 @@ namespace register
         private System.Windows.Forms.Label labelSum;
         private System.Windows.Forms.NumericUpDown numericUpDownQuantity;
         private System.Windows.Forms.Button buttonAddItem;
+        private System.Windows.Forms.Panel panelRight;
+        private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.ListBox listBoxItems;
+        private System.Windows.Forms.GroupBox groupBoxTotal;
+        private System.Windows.Forms.Label labelTotal;
+        private System.Windows.Forms.Button buttonDeleteLastItem;
     }
 }

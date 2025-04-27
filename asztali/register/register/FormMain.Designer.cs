@@ -51,31 +51,31 @@ namespace register
             this.comboBoxProductId = new System.Windows.Forms.ComboBox();
             this.labelProductId = new System.Windows.Forms.Label();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.checkBoxFinalWarning = new System.Windows.Forms.CheckBox();
+            this.buttonSubmitReceipt = new System.Windows.Forms.Button();
+            this.labelChangeDisplay = new System.Windows.Forms.Label();
+            this.labelChange = new System.Windows.Forms.Label();
+            this.numericUpDownPayed = new System.Windows.Forms.NumericUpDown();
+            this.labelPayed = new System.Windows.Forms.Label();
+            this.labelToPayDisplay = new System.Windows.Forms.Label();
+            this.groupBoxPaymentMethod = new System.Windows.Forms.GroupBox();
+            this.radioButtonCash = new System.Windows.Forms.RadioButton();
+            this.radioButtonCard = new System.Windows.Forms.RadioButton();
+            this.labelToPay = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.buttonDeleteLastItem = new System.Windows.Forms.Button();
             this.groupBoxTotal = new System.Windows.Forms.GroupBox();
             this.labelTotal = new System.Windows.Forms.Label();
             this.listBoxItems = new System.Windows.Forms.ListBox();
-            this.labelToPay = new System.Windows.Forms.Label();
-            this.radioButtonCard = new System.Windows.Forms.RadioButton();
-            this.groupBoxPaymentMethod = new System.Windows.Forms.GroupBox();
-            this.radioButtonCash = new System.Windows.Forms.RadioButton();
-            this.labelToPayDisplay = new System.Windows.Forms.Label();
-            this.labelPayed = new System.Windows.Forms.Label();
-            this.numericUpDownPayed = new System.Windows.Forms.NumericUpDown();
-            this.labelChange = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonSubmitReceipt = new System.Windows.Forms.Button();
-            this.checkBoxFinalWarning = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).BeginInit();
             this.panelRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPayed)).BeginInit();
+            this.groupBoxPaymentMethod.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.groupBoxTotal.SuspendLayout();
-            this.groupBoxPaymentMethod.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPayed)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxLogo
@@ -278,6 +278,7 @@ namespace register
             this.comboBoxProduct.Name = "comboBoxProduct";
             this.comboBoxProduct.Size = new System.Drawing.Size(200, 50);
             this.comboBoxProduct.TabIndex = 5;
+            this.comboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comboBoxProduct_SelectedIndexChanged);
             // 
             // comboBoxCategory
             // 
@@ -291,6 +292,7 @@ namespace register
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(200, 50);
             this.comboBoxCategory.TabIndex = 4;
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // labelProduct
             // 
@@ -345,7 +347,7 @@ namespace register
             // 
             this.panelRight.Controls.Add(this.checkBoxFinalWarning);
             this.panelRight.Controls.Add(this.buttonSubmitReceipt);
-            this.panelRight.Controls.Add(this.label1);
+            this.panelRight.Controls.Add(this.labelChangeDisplay);
             this.panelRight.Controls.Add(this.labelChange);
             this.panelRight.Controls.Add(this.numericUpDownPayed);
             this.panelRight.Controls.Add(this.labelPayed);
@@ -357,6 +359,151 @@ namespace register
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(500, 848);
             this.panelRight.TabIndex = 5;
+            // 
+            // checkBoxFinalWarning
+            // 
+            this.checkBoxFinalWarning.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxFinalWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBoxFinalWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(171)))), ((int)(((byte)(42)))));
+            this.checkBoxFinalWarning.Location = new System.Drawing.Point(40, 698);
+            this.checkBoxFinalWarning.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxFinalWarning.Name = "checkBoxFinalWarning";
+            this.checkBoxFinalWarning.Size = new System.Drawing.Size(420, 50);
+            this.checkBoxFinalWarning.TabIndex = 17;
+            this.checkBoxFinalWarning.Text = "A tételhez megerősítés szükséges!";
+            this.checkBoxFinalWarning.UseVisualStyleBackColor = true;
+            // 
+            // buttonSubmitReceipt
+            // 
+            this.buttonSubmitReceipt.AutoSize = true;
+            this.buttonSubmitReceipt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.buttonSubmitReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSubmitReceipt.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonSubmitReceipt.Location = new System.Drawing.Point(260, 768);
+            this.buttonSubmitReceipt.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSubmitReceipt.Name = "buttonSubmitReceipt";
+            this.buttonSubmitReceipt.Size = new System.Drawing.Size(200, 40);
+            this.buttonSubmitReceipt.TabIndex = 16;
+            this.buttonSubmitReceipt.Text = "Számla rögzítése";
+            this.buttonSubmitReceipt.UseVisualStyleBackColor = false;
+            // 
+            // labelChangeDisplay
+            // 
+            this.labelChangeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelChangeDisplay.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelChangeDisplay.Location = new System.Drawing.Point(160, 410);
+            this.labelChangeDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.labelChangeDisplay.Name = "labelChangeDisplay";
+            this.labelChangeDisplay.Size = new System.Drawing.Size(300, 50);
+            this.labelChangeDisplay.TabIndex = 15;
+            this.labelChangeDisplay.Text = "2 000 Ft";
+            this.labelChangeDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelChange
+            // 
+            this.labelChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelChange.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelChange.Location = new System.Drawing.Point(40, 390);
+            this.labelChange.Margin = new System.Windows.Forms.Padding(0);
+            this.labelChange.Name = "labelChange";
+            this.labelChange.Size = new System.Drawing.Size(200, 50);
+            this.labelChange.TabIndex = 14;
+            this.labelChange.Text = "Visszajáró:";
+            this.labelChange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownPayed
+            // 
+            this.numericUpDownPayed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.numericUpDownPayed.DecimalPlaces = 2;
+            this.numericUpDownPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.numericUpDownPayed.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.numericUpDownPayed.Location = new System.Drawing.Point(40, 300);
+            this.numericUpDownPayed.Margin = new System.Windows.Forms.Padding(0);
+            this.numericUpDownPayed.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDownPayed.Name = "numericUpDownPayed";
+            this.numericUpDownPayed.Size = new System.Drawing.Size(420, 50);
+            this.numericUpDownPayed.TabIndex = 13;
+            this.numericUpDownPayed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelPayed
+            // 
+            this.labelPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPayed.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelPayed.Location = new System.Drawing.Point(40, 250);
+            this.labelPayed.Margin = new System.Windows.Forms.Padding(0);
+            this.labelPayed.Name = "labelPayed";
+            this.labelPayed.Size = new System.Drawing.Size(200, 50);
+            this.labelPayed.TabIndex = 12;
+            this.labelPayed.Text = "Fizetett összeg:";
+            this.labelPayed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelToPayDisplay
+            // 
+            this.labelToPayDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelToPayDisplay.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelToPayDisplay.Location = new System.Drawing.Point(230, 180);
+            this.labelToPayDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.labelToPayDisplay.Name = "labelToPayDisplay";
+            this.labelToPayDisplay.Size = new System.Drawing.Size(230, 50);
+            this.labelToPayDisplay.TabIndex = 11;
+            this.labelToPayDisplay.Text = "2 000 Ft / Kg";
+            this.labelToPayDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // groupBoxPaymentMethod
+            // 
+            this.groupBoxPaymentMethod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(45)))), ((int)(((byte)(52)))));
+            this.groupBoxPaymentMethod.Controls.Add(this.radioButtonCash);
+            this.groupBoxPaymentMethod.Controls.Add(this.radioButtonCard);
+            this.groupBoxPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBoxPaymentMethod.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxPaymentMethod.Location = new System.Drawing.Point(40, 40);
+            this.groupBoxPaymentMethod.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBoxPaymentMethod.Name = "groupBoxPaymentMethod";
+            this.groupBoxPaymentMethod.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBoxPaymentMethod.Size = new System.Drawing.Size(420, 100);
+            this.groupBoxPaymentMethod.TabIndex = 10;
+            this.groupBoxPaymentMethod.TabStop = false;
+            this.groupBoxPaymentMethod.Text = "Fizetési mód";
+            // 
+            // radioButtonCash
+            // 
+            this.radioButtonCash.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radioButtonCash.Location = new System.Drawing.Point(230, 30);
+            this.radioButtonCash.Margin = new System.Windows.Forms.Padding(0);
+            this.radioButtonCash.Name = "radioButtonCash";
+            this.radioButtonCash.Size = new System.Drawing.Size(150, 50);
+            this.radioButtonCash.TabIndex = 10;
+            this.radioButtonCash.Text = "Készpénz";
+            this.radioButtonCash.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCard
+            // 
+            this.radioButtonCard.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radioButtonCard.Checked = true;
+            this.radioButtonCard.Location = new System.Drawing.Point(40, 30);
+            this.radioButtonCard.Margin = new System.Windows.Forms.Padding(0);
+            this.radioButtonCard.Name = "radioButtonCard";
+            this.radioButtonCard.Size = new System.Drawing.Size(120, 50);
+            this.radioButtonCard.TabIndex = 9;
+            this.radioButtonCard.TabStop = true;
+            this.radioButtonCard.Text = "Kártya";
+            this.radioButtonCard.UseVisualStyleBackColor = true;
+            // 
+            // labelToPay
+            // 
+            this.labelToPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelToPay.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelToPay.Location = new System.Drawing.Point(40, 160);
+            this.labelToPay.Margin = new System.Windows.Forms.Padding(0);
+            this.labelToPay.Name = "labelToPay";
+            this.labelToPay.Size = new System.Drawing.Size(200, 50);
+            this.labelToPay.TabIndex = 8;
+            this.labelToPay.Text = "Fizetendő összeg:";
+            this.labelToPay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelMain
             // 
@@ -423,150 +570,6 @@ namespace register
             this.listBoxItems.Size = new System.Drawing.Size(884, 593);
             this.listBoxItems.TabIndex = 0;
             // 
-            // labelToPay
-            // 
-            this.labelToPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelToPay.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelToPay.Location = new System.Drawing.Point(40, 160);
-            this.labelToPay.Margin = new System.Windows.Forms.Padding(0);
-            this.labelToPay.Name = "labelToPay";
-            this.labelToPay.Size = new System.Drawing.Size(200, 50);
-            this.labelToPay.TabIndex = 8;
-            this.labelToPay.Text = "Fizetendő összeg:";
-            this.labelToPay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // radioButtonCard
-            // 
-            this.radioButtonCard.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radioButtonCard.Checked = true;
-            this.radioButtonCard.Location = new System.Drawing.Point(40, 30);
-            this.radioButtonCard.Margin = new System.Windows.Forms.Padding(0);
-            this.radioButtonCard.Name = "radioButtonCard";
-            this.radioButtonCard.Size = new System.Drawing.Size(120, 50);
-            this.radioButtonCard.TabIndex = 9;
-            this.radioButtonCard.Text = "Kártya";
-            this.radioButtonCard.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxPaymentMethod
-            // 
-            this.groupBoxPaymentMethod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(45)))), ((int)(((byte)(52)))));
-            this.groupBoxPaymentMethod.Controls.Add(this.radioButtonCash);
-            this.groupBoxPaymentMethod.Controls.Add(this.radioButtonCard);
-            this.groupBoxPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBoxPaymentMethod.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBoxPaymentMethod.Location = new System.Drawing.Point(40, 40);
-            this.groupBoxPaymentMethod.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBoxPaymentMethod.Name = "groupBoxPaymentMethod";
-            this.groupBoxPaymentMethod.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBoxPaymentMethod.Size = new System.Drawing.Size(420, 100);
-            this.groupBoxPaymentMethod.TabIndex = 10;
-            this.groupBoxPaymentMethod.TabStop = false;
-            this.groupBoxPaymentMethod.Text = "Fizetési mód";
-            // 
-            // radioButtonCash
-            // 
-            this.radioButtonCash.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radioButtonCash.Location = new System.Drawing.Point(230, 30);
-            this.radioButtonCash.Margin = new System.Windows.Forms.Padding(0);
-            this.radioButtonCash.Name = "radioButtonCash";
-            this.radioButtonCash.Size = new System.Drawing.Size(150, 50);
-            this.radioButtonCash.TabIndex = 10;
-            this.radioButtonCash.Text = "Készpénz";
-            this.radioButtonCash.UseVisualStyleBackColor = true;
-            // 
-            // labelToPayDisplay
-            // 
-            this.labelToPayDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelToPayDisplay.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelToPayDisplay.Location = new System.Drawing.Point(230, 180);
-            this.labelToPayDisplay.Margin = new System.Windows.Forms.Padding(0);
-            this.labelToPayDisplay.Name = "labelToPayDisplay";
-            this.labelToPayDisplay.Size = new System.Drawing.Size(230, 50);
-            this.labelToPayDisplay.TabIndex = 11;
-            this.labelToPayDisplay.Text = "2 000 Ft / Kg";
-            this.labelToPayDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelPayed
-            // 
-            this.labelPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPayed.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelPayed.Location = new System.Drawing.Point(40, 250);
-            this.labelPayed.Margin = new System.Windows.Forms.Padding(0);
-            this.labelPayed.Name = "labelPayed";
-            this.labelPayed.Size = new System.Drawing.Size(200, 50);
-            this.labelPayed.TabIndex = 12;
-            this.labelPayed.Text = "Fizetett összeg:";
-            this.labelPayed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // numericUpDownPayed
-            // 
-            this.numericUpDownPayed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.numericUpDownPayed.DecimalPlaces = 2;
-            this.numericUpDownPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.numericUpDownPayed.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.numericUpDownPayed.Location = new System.Drawing.Point(40, 300);
-            this.numericUpDownPayed.Margin = new System.Windows.Forms.Padding(0);
-            this.numericUpDownPayed.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDownPayed.Name = "numericUpDownPayed";
-            this.numericUpDownPayed.Size = new System.Drawing.Size(420, 50);
-            this.numericUpDownPayed.TabIndex = 13;
-            this.numericUpDownPayed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // labelChange
-            // 
-            this.labelChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelChange.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelChange.Location = new System.Drawing.Point(40, 390);
-            this.labelChange.Margin = new System.Windows.Forms.Padding(0);
-            this.labelChange.Name = "labelChange";
-            this.labelChange.Size = new System.Drawing.Size(200, 50);
-            this.labelChange.TabIndex = 14;
-            this.labelChange.Text = "Visszajáró:";
-            this.labelChange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(160, 410);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(300, 50);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "2 000 Ft";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // buttonSubmitReceipt
-            // 
-            this.buttonSubmitReceipt.AutoSize = true;
-            this.buttonSubmitReceipt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
-            this.buttonSubmitReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSubmitReceipt.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonSubmitReceipt.Location = new System.Drawing.Point(260, 768);
-            this.buttonSubmitReceipt.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSubmitReceipt.Name = "buttonSubmitReceipt";
-            this.buttonSubmitReceipt.Size = new System.Drawing.Size(200, 40);
-            this.buttonSubmitReceipt.TabIndex = 16;
-            this.buttonSubmitReceipt.Text = "Számla rögzítése";
-            this.buttonSubmitReceipt.UseVisualStyleBackColor = false;
-            // 
-            // checkBoxFinalWarning
-            // 
-            this.checkBoxFinalWarning.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxFinalWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxFinalWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(171)))), ((int)(((byte)(42)))));
-            this.checkBoxFinalWarning.Location = new System.Drawing.Point(40, 698);
-            this.checkBoxFinalWarning.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxFinalWarning.Name = "checkBoxFinalWarning";
-            this.checkBoxFinalWarning.Size = new System.Drawing.Size(420, 50);
-            this.checkBoxFinalWarning.TabIndex = 17;
-            this.checkBoxFinalWarning.Text = "A tételhez megerősítés szükséges!";
-            this.checkBoxFinalWarning.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,11 +593,11 @@ namespace register
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).EndInit();
             this.panelRight.ResumeLayout(false);
             this.panelRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPayed)).EndInit();
+            this.groupBoxPaymentMethod.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
             this.groupBoxTotal.ResumeLayout(false);
-            this.groupBoxPaymentMethod.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPayed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -636,7 +639,7 @@ namespace register
         private System.Windows.Forms.RadioButton radioButtonCash;
         private System.Windows.Forms.CheckBox checkBoxFinalWarning;
         private System.Windows.Forms.Button buttonSubmitReceipt;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelChangeDisplay;
         private System.Windows.Forms.Label labelChange;
     }
 }

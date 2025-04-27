@@ -17,10 +17,17 @@ namespace register
     {
         HttpClient client = new HttpClient();
         string baseURL = "http://localhost:3000/server";
+        List<CatalogItem> catalog = new List<CatalogItem>();
+
         class Employee
         {
             public string anev, amunka;
             public DateTime aszul, abelepes;
+        }
+        class CatalogItem
+        {
+            public int tazon;
+            public string tnev, tkategoria;
         }
         Employee employee = new Employee();
 
@@ -45,6 +52,87 @@ namespace register
                 MessageBox.Show(e.Message);
             }
         }
+        async void SetProductCategories()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(baseURL + $"/termek/termeklista/");
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    catalog = JsonConvert.DeserializeObject<List<CatalogItem>>(jsonString);
+                }
+                else
+                {
+                    MessageBox.Show("Hiba a lekérdezés során!");
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            foreach (var item in catalog.Select(a => a.tkategoria).Distinct())
+            {
+                comboBoxCategory.Items.Add(item);
+            }
+            foreach (var item in catalog.Select(a => a.tazon))
+            {
+                comboBoxCategory.Items.Add(item);
+            }
+        }
+
+        async void SetProducts(string category)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(baseURL + $"/termek/termeklista/");
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    catalog = JsonConvert.DeserializeObject<List<CatalogItem>>(jsonString);
+                }
+                else
+                {
+                    MessageBox.Show("Hiba a lekérdezés során!");
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            comboBoxProduct.Items.Clear();
+            comboBoxProduct.Text = "";
+            foreach (var item in catalog.Where(a => a.tkategoria == category).Select(a => a.tnev))
+            {
+                comboBoxProduct.Items.Add(item);
+            }
+        }
+
+        async void SetProductId(string product)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(baseURL + $"/termek/termeklista/");
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    catalog = JsonConvert.DeserializeObject<List<CatalogItem>>(jsonString);
+                }
+                else
+                {
+                    MessageBox.Show("Hiba a lekérdezés során!");
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            foreach (var item in catalog.Where(a => a.tnev == product).Select(a => a.tazon))
+            {
+                comboBoxProductId.Text = item.ToString();
+            }
+        }
+
         public FormMain(int id)
         {
             InitializeComponent();
@@ -55,6 +143,18 @@ namespace register
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            SetProductCategories();
+
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetProducts(comboBoxCategory.SelectedItem.ToString());
+        }
+
+        private void comboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetProductId(comboBoxProduct.SelectedItem.ToString());
         }
     }
 }

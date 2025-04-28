@@ -29,6 +29,14 @@ namespace register
             public int tazon;
             public string tnev, tkategoria;
         }
+
+        class Product
+        {
+            public int tar, tmennyiseg;
+            public string tmennyisegiegyseg;
+            public bool tkoros;
+        }
+        
         Employee employee = new Employee();
 
         async void SetEmployee(int id)
@@ -77,7 +85,7 @@ namespace register
             }
             foreach (var item in catalog.Select(a => a.tazon))
             {
-                comboBoxCategory.Items.Add(item);
+                comboBoxProductId.Items.Add(item);
             }
         }
 
@@ -131,6 +139,50 @@ namespace register
             {
                 comboBoxProductId.Text = item.ToString();
             }
+            DisplayProductInfo(Convert.ToInt16(comboBoxProductId.Text));
+        }
+
+        async void DisplayProductInfo(int id)
+        {
+            Product product = new Product();
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(baseURL + $"/termek/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    product = JsonConvert.DeserializeObject<List<Product>>(jsonString)[0];
+                }
+                else
+                {
+                    MessageBox.Show("Hiba a lekérdezés során!");
+                }
+                if (product.tkoros)
+                {
+                    labelProductWarning.Show();
+                    checkBoxItemWarning.Show();
+                    checkBoxItemWarning.Checked = false;
+                }
+                else
+                {
+                    labelProductWarning.Hide();
+                    checkBoxItemWarning.Hide();
+                }
+                labelPricePerUnitDisplay.Text = $"{product.tar} Ft / {product.tmennyisegiegyseg}";
+                if (product.tmennyisegiegyseg == "db")
+                {
+                    numericUpDownQuantity.DecimalPlaces = 0;
+                }
+                else
+                {
+                    numericUpDownQuantity.DecimalPlaces = 2;
+                }
+
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         public FormMain(int id)
@@ -143,6 +195,9 @@ namespace register
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            labelProductWarning.Hide();
+            checkBoxItemWarning.Hide();
+            labelPricePerUnitDisplay.Text = "";
             SetProductCategories();
 
         }

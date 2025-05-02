@@ -59,7 +59,7 @@ Vásárlásokat és értékesítéseket lehet rögzíteni egy egyszerű, intuit�
 ## 5. Eszközök és technológia
   - **Adatbázis:** MySQL
   - **Backend:** Node.js, Express.
-  - **Frontend:** HTML/CSS (+Bootstrap)/JavaScript
+  - **Frontend:** HTML/CSS és JavaScript
   - **Asztali applikáció:** C# .NET Windows Forms Application **--!! (BBCode)**
   - **Projekt menedzsment:** Trello
   - **Verziókezelés:** GitHub

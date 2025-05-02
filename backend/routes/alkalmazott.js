@@ -1,30 +1,100 @@
 import express from 'express';
 import * as db from '../db.js';
+import { WCashiersPerformance } from '../db.js';
+
 const router = express.Router();
 
-export const routes = express.Router();
 
-router.get('/belepes/:felulet/:aazon', async (req, res) => {
-    let access = await db.Belepes(req.params.felulet, req.params.aazon);
-    if (access == null) {
-        res.status(422).send();
-    }
-    else{
-    res.header('Content-Type', 'application/json');
-    res.status(201).send(access);
+
+router.get('/cashiers-performance', async (req, res) => {
+    try {
+        const result = await WCashiersPerformance();
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 
 router.get('/:aazon', async (req, res) => {
-    let alkalmazott = await db.DAlkalmazott(req.params.aazon);
+    console.log('Handling /:aazon');
+    let alkalmazott = await DAlkalmazott(req.params.aazon);
     res.header('Content-Type', 'application/json');
     res.status(201).send(alkalmazott);
 });
 
 router.get('/', async (req, res) => {
-    let munkaadatok = await db.WMunkaAdatok();
-    res.header('Content-Type', 'application/json');
-    res.status(201).send(munkaadatok);
+    try {
+        const alkalmazottak = await DAlkalmazott(); 
+        res.status(200).json(alkalmazottak);
+    } catch (error) {
+        console.error('Hiba az alkalmazottak lekérdezésekor:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
+router.get('/belepes/:felulet/:id', async (req, res) => {
+    try {
+        console.log(`Handling GET /server/alkalmazott/belepes/${req.params.felulet}/${req.params.id}`);
+        const { felulet, id } = req.params;
+
+        // Validate id
+        if (!id) {
+            console.log('Missing id parameter');
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Felhasználói azonosító szükséges' 
+            });
+        }
+
+        // Ensure id is a number (aazon is likely numeric in the database)
+        const numericId = Number(id);
+        if (isNaN(numericId)) {
+            console.log('Invalid id format:', id);
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Érvénytelen felhasználói azonosító formátum' 
+            });
+        }
+
+        const result = await db.Belepes(felulet, numericId);
+        
+        if (!result) {
+            console.log('Invalid felulet:', felulet);
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Érvénytelen felület' 
+            });
+        }
+        
+        if (result.length === 0) {
+            console.log('No user found or no web access:', { felulet, id });
+            return res.status(401).json({ 
+                success: false, 
+                message: 'Érvénytelen felhasználói azonosító vagy nincs webes jogosultság' 
+            });
+        }
+        
+        console.log('Login successful:', result);
+        res.status(200).json({ success: true, data: result });
+    } catch (error) {
+        console.error('Error in belepes:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Szerver hiba',
+            error: error.message 
+        });
+    }
+});
+
+router.get('/:aazon', async (req, res) => {
+    try {
+        let alkalmazott = await DAlkalmazott(req.params.aazon);
+        res.status(201).json(alkalmazott);
+    } catch (error) {
+        console.error('DAlkalmazott error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
 
 export default router;

@@ -1,256 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css" />
     <title>Billing System</title>
-    <script src="script.js" defer></script>
-    
-  
-</head>
-<body>
-  
-
-        <!-- fixed part -->
-       <nav>
-        <div>
-            <ul class="nav-list">
-                <li>
-                    <a href="../html/main.html"><img id="logo" src="../images/logo.png" alt="logo"></a>
-                </li>
-                <li>
-                    <a href="../html/main.html">
-                        <p><img src="../images/house.png" alt="home">Home</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="../html/transactions.html">
-                        <p><img src="../images/transactions.png" alt="transactions">Transactions</p>
-                    </a>
-                </li>
-               
-                <li>
-                    <a href="../html/statistics.html">
-                        <p><img src="../images/statistics.png" alt="statistics">Statistics</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="../html/products.html">
-                        <p><img src="../images/products.png" alt="products">Products</p>
-                    </a>
-    
-                </li>
-                    <br><br>    
-                <li>
-                    <a href="../html/login.html"><p><img src="../images/logout_icon.svg" alt="products">Logout</p></a>
-                </li>
-                
-            </ul>
-    </div>
-       </nav>
-         
-         
-       
+    <script src="/script/products.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div>
+        <ul class="nav-list">
+          <li>
+            <a href="main.html"
+              ><img id="logo" src="../images/logo.png" alt="logo"
+            /></a>
+          </li>
+          <li>
+            <a href="main.html">
+              <p><img src="../images/house.png" alt="home" />Home</p>
+            </a>
+          </li>
+          <li>
+            <a href="transactions.html">
+              <p>
+                <img
+                  src="../images/transactions.png"
+                  alt="transactions"
+                />Transactions
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="statistics.html">
+              <p>
+                <img
+                  src="../images/statistics.png"
+                  alt="statistics"
+                />Statistics
+              </p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="products.html">
+              <p><img src="../images/products.png" alt="products" />Products</p>
+            </a>
+          </li>
+          <br /><br />
+          <li>
+            <a href="login.html"
+              ><p>
+                <img src="../images/logout_icon.png" alt="logout" />Logout
+              </p></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <p id="no_responsivity_message">Products page is not supported on smaller screen sizes!</p>
+    <main id="no_responsivity">
+      <h1 id="products">Products</h1>
+      <button
+        class="add-btn"
+        onclick="document.getElementById('edititem').scrollIntoView({ behavior: 'smooth' })"
+      >
+        Manipulate Data
+      </button>
+      <button type="button" class="totop" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">
+        Go to top
+    </button>
+      <button type="button" class="tobottom" onclick="document.getElementById('edititem').scrollIntoView({ behavior: 'smooth' })">
+        Go to bottom
+      </button>
+      <div id="notification" class="notification"></div>
+      <div class="tabsDiv" id="productCards"></div>
+        <!-- Card go here-->
+      <form id="edititem">
+        <h2>Manipulate Data</h2>
+        <div class="form-group">
+          <label for="productname">Product Name</label>
+          <input
+            type="text"
+            maxlength="100"
+            id="productname"
+            name="tnev"
+            placeholder="Enter product name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="tkoros">Adult Product?</label>
+          <input type="checkbox" id="tkoros" name="tkoros" class="checkbox" />
+        </div>
+        <div class="form-group">
+          <label for="tkategoria">Category</label>
+          <select name="tkategoria" id="tkategoria" required>
+            <option value="Pékáru">Pékáru</option>
+            <option value="Tejtermék">Tejtermék</option>
+            <option value="Szeszesital">Szeszesital</option>
+            <option value="Italok">Italok</option>
+            <option value="Gyümölcs">Gyümölcs</option>
+            <option value="Húsáru">Húsáru</option>
+            <option value="Zöldség">Zöldség</option>
+            <option value="Fagyasztott">Fagyasztott</option>
+            <option value="Konzervek">Konzervek</option>
+            <option value="Édesség">Édesség</option>
+            <option value="Háztartás">Háztartás</option>
+            <option value="Személyes higiénia">Személyes higiénia</option>
+            <option value="Gyógyszer">Gyógyszer</option>
+            <option value="Egyéb">Egyéb</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tar">Price (HUF)</label>
+          <input type="number" id="tar" name="tar" min="0" placeholder="0" />
+          <label for="tmennyiseg">Stock</label>
+          <input
+            type="number"
+            id="tmennyiseg"
+            name="tmennyiseg"
+            min="0"
+            placeholder="Amount in stock"
+          />
+          <label for="tmennyisegiegyseg">Unit</label>
+          <select name="tmennyisegiegyseg" id="tmennyisegiegyseg">
+            <option value="db">Piece</option>
+            <option value="l">Litre</option>
+            <option value="ml">Mililitre</option>
+            <option value="kg">Kilogram</option>
+            <option value="g">Gram</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tminkeszlet">Minimum Quantity</label>
+          <input
+            type="number"
+            id="tminkeszlet"
+            name="tminkeszlet"
+            min="0"
+            placeholder="Amount when to refill"
+          />
+          <label for="trendeles">Refill Size</label>
+          <input
+            type="number"
+            id="trendeles"
+            name="trendeles"
+            min="0"
+            placeholder="Refill amount"
+          />
+        </div>
+        <div class="form-group">
+            <label for="bazon">Supplier ID</label>
+          <input
+            type="number"
+            id="bazon"
+            name="bazon"
+            min="1"
+            placeholder="ID of the supplier"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tazon">Product ID</label>
+          <input
+            type="number"
+            id="tazon"
+            name="tazon"
+            placeholder="Identify the product by entering its ID here"
+          />
           
-   </div>
-
-
-
-<main>
-    <h1>Products</h1>
-    <button class="add-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Create Product</a></button>
-    <div class="tabsDiv">
-        <!--Product name 19-19!-->
-        <div class="tab card">
-            <h3>Bread (+18)</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p class="stockshortage">Stock: 340g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
+          <div class="button-group">
+            <button type="button" class="edit-btn" onclick="editByProductId()">
+              Edit
+            </button>
+            <button
+              type="button"
+              class="delete-btn"
+              onclick="deleteProduct(document.getElementById('tazon').value)"
+            >
+              Delete
+            </button>
+            <button type="button" onclick="emptyForm()">
+                Empty Form
+              </button>
+            
+          </div>
         </div>
-        <div class="tab card">
-            <h3>Bread (+18)</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p class="stockempty">Stock: 0g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
-        </div>
-        <div class="tab card">
-            <h3>Bread (+18)</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p>Stock: 340g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
-        </div>
-        <div class="tab card">
-            <h3>Bread (+18)</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p>Stock: 340g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
-        </div>
-
-        <div class="tab card">
-            <h3>ssdsadsadsassdsssss</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p>Stock: 340g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
-        </div> <div class="tab card">
-            <h3>Bread (+18)</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p>Stock: 340g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
-        </div>
-        <div class="tab card">
-            <h3>Bread (+18)</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p class="stockshortage">Stock: 340g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
-        </div>
-        <div class="tab card">
-            <h3>Bread (+18)</h3>
-            <p>Category: Bakery</p>
-            <p>500$</p>
-            <p>Stock: 340g</p>
-            <p>Product ID: 341</p>
-            <p>Supplier ID: 3</p>
-            <button class="edit-btn" onClick="document.getElementById('edititem').scrollIntoView();" >Edit</a></button>
-            <button class="delete-btn">Delete</button>
-        </div>
+        <button type="button" class="add-btn" onclick="createProduct()">
+          Add Product
+        </button>
         
+      </form>
+      
+    </main>
 
-
-        
-        
-    </div>
-    
-       
-        <form id="edititem">
-            <h2>Manipulate database</h2>
-            <div class="form-group">
-                <label for="product name">Product name</label>
-                <input type="text" maxlength="100" id="productname" placeholder="Aa">
-                
-
-                
-            </div>
-
-            <div class="form-group">
-                    <label for="product name">Adult product?</label>
-                    <input type="checkbox" class="checkbox"></input>
-                    
-            </div>
-
-            <div class="form-group">
-                <label for="product name">Category</label>
-                <select name="categories" id="categories">
-                    <option value="pekáru">Pékáru</option>
-                    <option value="tejtermék">Tejtermék</option>
-                    <option value="szeszesital">Szeszesital</option>
-                    <option value="italok">Italok</option>
-                    <option value="gyümölcs">Gyümölcs</option>
-                    <option value="húsáru">Húsáru</option>
-                    <option value="zöldség">Zöldség</option>
-                    <option value="fagyasztott">Fagyasztott</option>
-                    <option value="konzervek">Konzervek</option>
-                    <option value="édesség">Édesség</option>
-                    <option value="háztartás">Háztartás</option>
-                    <option value="személyes_higiénia">Személyes higiénia</option>
-                    <option value="gyógyszer">Gyógyszer</option>
-                    <option value="egyéb">Egyéb</option>
-                  </select>
-            </div>
-
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="number" id="price" placeholder="0 HUF">
-
-                <label for="price">Stock</label>
-                <input type="number" id="Stock" placeholder="The amount in stock">
-                <label for="price">Unit:</label>
-                <select name="units" id="units">
-                    <option value="pcs">Piece</option>
-                    <option value="litre">Litre</option>
-                    <option value="ml">Mililitre</option>
-                    <option value="kg">Kilogram</option>
-                    <option value="gram">Gram</option>
-
-                    
-                  </select> 
-
-            </div>
-            <div class="form-group">
-                <label for="minquantity">Minimum quantity</label>
-                <input type="number" id="minquantity" placeholder="Amount when to refill the stock">
-
-                <label for="refillsize">Refill size</label>
-                <input type="number" id="refillsize" placeholder="Amount the stock will refill from the specific supplier">
-            </div>
-            <div class="form-group">
-                <label for="product id">Product ID</label>
-                <input type="number" id="productid" placeholder="ID of the product">
-
-                <label for="supplier id">Supplier ID</label>
-                <input type="number" id="supplierid" placeholder="ID of the supplier">
-
-                <div class="button-group">
-                    <button type="button" class="edit-btn">Edit</button>
-                    <button type="button" class="delete-btn">Delete</button>
-                </div>
-            </div>
-
-            <button type="button" class="add-btn">Add Product</button>
-        </form>
-   
-</main>
-<footer class="footer">
-
-
-
-    <p>2025 - <a href="../html/main.html">return</a></p>
-   <!--<a href="https://github.com/zenerra/mesterremek">                     @mesterremek</a>  --> 
-</footer>
-
-
-
-
-
-
-
-    
-   
-  
-        
-
-   
-    
-
-    
-</body>
+    <footer class="footer">
+      <p>2025 - <a href="aboutus.html">About us</a></p>
+    </footer>
+  </body>
 </html>

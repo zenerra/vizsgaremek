@@ -5,209 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/MainIcon.png">
     <link rel="stylesheet" href="../style/style.css">
-    <title>Billing System</title>
-    <script src="script.js" defer></script>
-    
-  
+    <title>Transactions</title>
+    <script src="../script/transactions.js" defer></script>
 </head>
 <body>
-  
-
-        <!-- fixed part -->
-       <nav>
-        
+    <!-- Navigation -->
+    <nav>
         <ul class="nav-list">
             <li>
-                <a href="../html/main.html"><img id="logo" src="../images/logo.png" alt="logo"></a>
+                <a href="main.html"><img id="logo" src="../images/logo.png" alt="logo"></a>
             </li>
             <li>
-                <a href="../html/main.html">
+                <a href="main.html">
                     <p><img src="../images/house.png" alt="home">Home</p>
                 </a>
             </li>
-            
             <li class="active">
-                <a href="../html/transactions.html">
+                <a href="transactions.html">
                     <p><img src="../images/transactions.png" alt="transactions">Transactions</p>
                 </a>
             </li>
-           
             <li>
-                <a href="../html/statistics.html">
+                <a href="statistics.html">
                     <p><img src="../images/statistics.png" alt="statistics">Statistics</p>
                 </a>
             </li>
             <li>
-                <a href="../html/products.html">
+                <a href="products.html">
                     <p><img src="../images/products.png" alt="products">Products</p>
                 </a>
-
             </li>
-                <br><br>    
+            <br><br>    
             <li>
-                <a href="../html/login.html"><p><img src="../images/logout_icon.svg" alt="products">Logout</p></a>
+                <a href="login.html"><p><img src="../images/logout_icon.png" alt="logout">Logout</p></a>
             </li>
-            
         </ul>
-       </nav>
-         
-         
+    </nav>
+
+    <!-- Notification element for messages -->
+    <div id="notification" class="notification"></div>
+
+    <p id="no_responsivity_message">Products page is not supported on smaller screen sizes!</p>
+    <main id="no_responsivity">
+        <h1>Latest Transactions</h1>
        
-          
-   </div>
-
-
-
-<main>
-    <h1>Transactions</h1>
-    <div class="tablecontainer">
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Payment</th>
-                <th>Register</th>
-                <th>Cashier</th>
-                <th>Items</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button onClick="document.getElementById('edittransaction').scrollIntoView();">Edit</a></button></td>
-                
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(3)</b></td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button onClick="document.getElementById('edittransaction').scrollIntoView();">Edit</a></button></td>
-                
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button>Edit</button></td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>2024-12-12 12:11:45</td>
-                <td>Kartya</td>
-                <td>1</td>
-                <td>4</td>
-                <td>Pieces<b>(21)</b></td>
-                <td><button>Edit</button></td>
-            </tr>
-        </table>
-    </div>
-    
-
-
         
+            <table id="transactionsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Payment</th>
+                        <th>Register</th>
+                        <th>Cashier</th>
+                        <th>Amount</th>
+                        <th></th> <!-- For Edit button -->
+                       
+                    </tr>
+                </thead>
+                <tbody id="transactionsBody">
+                    <!-- Data will be added dynamically -->
+                </tbody>
+            </table>
+       
+
         <form id="edittransaction">
-            <h3>Manipulate database</h3>
+            <h3>Manipulate Database</h3>
             <div class="form-group">
-                <label for="amount">Amount (Ft)</label>
-                <input type="number" id="amount" >
+                
                 <div class="button-group">
-                    <label for="amount">Payment Method</label>
-                    <button type="button" class="cash-btn">Cash</button>
-                    <button type="button" class="card-btn">Card</button>
+                    <label for="payment-method">Payment Method</label>
+                    <div class="radio-box">
+                        <input type="radio" name="select" id="cash-radio" value="készpénz">
+                        <label for="cash-radio" class="cash-radio">
+                            <div class="dot"></div>
+                            <div class="text">Cash</div>
+                        </label>
+                        <input type="radio" name="select" id="card-radio" value="kártya">
+                        <label for="card-radio" class="card-radio">
+                            <div class="dot"></div>
+                            <div class="text">Bank card</div>
+                        </label>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="datetime">Date and time</label>
-                <input type="datetime-local" step=1 name="dateinput" >
+                <label for="datetime">Date and Time</label>
+                <input type="datetime-local" step="1" name="dateinput" id="datetime">
                 
-                <label for="cashier">Register</label>
+                <label for="register">Register</label>
                 <input type="number" id="register" placeholder="ID of the register">
                 <label for="cashier">Cashier</label>
                 <input type="number" id="cashier" placeholder="ID of the cashier">
-                
             </div>
             
             <div class="form-group">
                 <label for="id">Transaction ID</label>
-            <input type="number" id="id" placeholder="ID of the transaction">
+                <input type="number" id="id" placeholder="ID of the transaction">
                 <div class="button-group">
-                    <button type="button" id class="edit-btn">Edit</button>
-                    <button type="button" class="delete-btn">Delete</button>
+                    <button type="button" id="editTransactionBtn" class="edit-btn">Edit</button>
+                    <button type="button" id="deleteTransactionBtn" class="delete-btn">Delete</button>
                 </div>
             </div>
-
         </form>
-    
-       
+    </main>
 
-
-
-</main>
-
-<footer class="footer">
-
-
-
-    <p>2025 - <a href="../html/main.html">return</a></p>
-   <!--<a href="https://github.com/zenerra/mesterremek">                     @mesterremek</a>  --> 
-</footer>
-
-    
+    <footer class="footer">
+        <p><a href="https://github.com/zenerra/mesterremek">@Mesterremek</a> - <a href="aboutus.html">About us</a></p>
+    </footer>
 </body>
 </html>

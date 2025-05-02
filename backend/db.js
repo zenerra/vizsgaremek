@@ -2,6 +2,7 @@ import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
 dotenv.config();
+<<<<<<< HEAD
 
 let connection;
 
@@ -13,6 +14,14 @@ try {
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME || "db_nyilvantartas",
     });
+=======
+const connection = await mysql.createConnection({
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || 'db_nyilvantartas'
+>>>>>>> cc9263a0d4b0d452fd03e828c8ccbeff9a710b56
     
 } catch (error) {
     console.error("Failed to connect to database:", error);

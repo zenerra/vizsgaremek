@@ -398,6 +398,7 @@ select {
     background-color: var(--warning);
 }
 
+/*No longer in use*/
 .notification.error {
     background-color: var(--danger);
 }

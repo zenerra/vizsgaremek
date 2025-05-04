@@ -71,7 +71,7 @@ export async function DTermekLista() {
 
 export async function DTermek(tazon) {
     let sql =
-        "SELECT termek.tar, termek.tmennyiseg, termek.tmennyisegiegyseg, termek.tkoros FROM termek WHERE tazon = ?";
+        "SELECT termek.tar, termek.tnev, termek.tmennyiseg, termek.tmennyisegiegyseg, termek.tkoros FROM termek WHERE tazon = ?";
     const [result] = await connection.execute(sql, [tazon]);
     return result;
 }

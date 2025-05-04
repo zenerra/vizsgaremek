@@ -18,6 +18,7 @@ namespace register
         HttpClient client = new HttpClient();
         string baseURL = "http://localhost:3000/server";
         List<CatalogItem> catalog = new List<CatalogItem>();
+        List<Item> cart = new List<Item>();
 
         class Employee
         {
@@ -32,9 +33,22 @@ namespace register
 
         class Product
         {
-            public int tar, tmennyiseg;
+            public int tar;
+            public string tnev;
+            public double tmennyiseg;
             public string tmennyisegiegyseg;
             public bool tkoros;
+        }
+        class Item
+        {
+            public Int64 tazon;
+            public double mennyiseg;
+
+            public Item(Int64 tazon, double mennyiseg)
+            {
+                this.tazon = tazon;
+                this.mennyiseg = mennyiseg;
+            }
         }
         
         Employee employee = new Employee();
@@ -139,10 +153,11 @@ namespace register
             {
                 comboBoxProductId.Text = item.ToString();
             }
-            DisplayProductInfo(Convert.ToInt16(comboBoxProductId.Text));
+            DisplayProductInfo(Convert.ToInt64(comboBoxProductId.Text));
+            CalculateSum(Convert.ToInt64(comboBoxProductId.Text));
         }
 
-        async void DisplayProductInfo(int id)
+        async void DisplayProductInfo(Int64 id)
         {
             Product product = new Product();
             try
@@ -185,6 +200,52 @@ namespace register
             }
         }
 
+        async void CalculateSum(Int64 id)
+        {
+            Product product = new Product();
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(baseURL + $"/termek/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    product = JsonConvert.DeserializeObject<List<Product>>(jsonString)[0];
+                }
+                else
+                {
+                    MessageBox.Show("Hiba a lekérdezés során!");
+                }
+                labelSumDisplay.Text = $"{(int)(product.tar * numericUpDownQuantity.Value)} Ft";
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        async void AddToCart(Item item)
+        {
+            Product product = new Product();
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(baseURL + $"/termek/{item.tazon}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    product = JsonConvert.DeserializeObject<List<Product>>(jsonString)[0];
+                }
+                else
+                {
+                    MessageBox.Show("Hiba a lekérdezés során!");
+                }
+                cart.Add(item);
+                listBoxItems.Items.Add($"{product.tnev}\t{item.mennyiseg} {product.tmennyisegiegyseg} * {product.tar} Ft/{product.tmennyisegiegyseg}\tÖsszesen: {(int)(product.tar * item.mennyiseg)} Ft");
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
         public FormMain(int id)
         {
             InitializeComponent();
@@ -198,6 +259,10 @@ namespace register
             labelProductWarning.Hide();
             checkBoxItemWarning.Hide();
             labelPricePerUnitDisplay.Text = "";
+            labelSumDisplay.Text = "";
+            StreamReader sr = new StreamReader("data.rg");
+            labelRegister.Text += sr.ReadLine();
+            sr.Close();
             SetProductCategories();
 
         }
@@ -210,6 +275,23 @@ namespace register
         private void comboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetProductId(comboBoxProduct.SelectedItem.ToString());
+        }
+
+        private void numericUpDownQuantity_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateSum(Convert.ToInt64(comboBoxProductId.Text));
+        }
+
+        private void buttonAddItem_Click(object sender, EventArgs e)
+        {
+            if (checkBoxItemWarning.Visible && !checkBoxItemWarning.Checked)
+            {
+                MessageBox.Show("Hozzá adás előtt megerősítés szükséges!", "Figyelem!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                AddToCart(new Item(Convert.ToInt64(comboBoxProductId.Text), Convert.ToDouble(numericUpDownQuantity.Value)));
+            }
         }
     }
 }

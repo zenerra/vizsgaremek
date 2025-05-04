@@ -46,7 +46,7 @@ namespace register
                 MessageBox.Show(e.Message);
             }
 
-            int max = 0;
+            int max = 1;
             for (int i = 0; i < registers.Count; i++)
             {
                 if (registers[i].spenztar > 1)

@@ -157,6 +157,7 @@ namespace register
             this.buttonAddItem.TabIndex = 15;
             this.buttonAddItem.Text = "Tétel hozzáadása";
             this.buttonAddItem.UseVisualStyleBackColor = false;
+            this.buttonAddItem.Click += new System.EventHandler(this.buttonAddItem_Click);
             // 
             // checkBoxItemWarning
             // 
@@ -217,6 +218,7 @@ namespace register
             0,
             0,
             0});
+            this.numericUpDownQuantity.ValueChanged += new System.EventHandler(this.numericUpDownQuantity_ValueChanged);
             // 
             // labelQuantity
             // 

@@ -44,7 +44,7 @@ async function fetchTransactions() {
 // Display transactions in the table
 function displayTransactions(transactions) {
     const tbody = document.getElementById("transactionsBody");
-    tbody.innerHTML = ""; 
+    tbody.innerHTML = "";
 
     if (transactions.length === 0) {
         tbody.innerHTML = "<tr><td colspan='7'>No transactions available.</td></tr>";
@@ -54,11 +54,11 @@ function displayTransactions(transactions) {
     transactions.forEach(tx => {
         const row = document.createElement("tr");
         const formattedDate = new Date(tx.skiallitas)
-        .toISOString()
-        .replace(/T/, " ")
-        .replace(/Z/, "")
-        .replace(/(\.\d{2})\d*/, "$1")
-        .replace(/-/g, "/");
+            .toISOString()
+            .replace(/T/, " ")
+            .replace(/Z/, "")
+            .replace(/(\.\d{2})\d*/, "$1")
+            .replace(/-/g, "/");
         row.innerHTML = `
             <td>${tx.sazon}</td>
             <td>${formattedDate}</td>
@@ -77,7 +77,7 @@ function displayTransactions(transactions) {
             document.getElementById("edittransaction").scrollIntoView({ behavior: "smooth" });
         });
 
-       
+
 
         tbody.appendChild(row);
     });
@@ -86,9 +86,9 @@ function displayTransactions(transactions) {
 // Populate the form with transaction data
 function populateForm(transaction) {
     const form = document.getElementById("edittransaction");
- 
 
- 
+
+
     document.getElementById("datetime").value = transaction.skiallitas.replace(" ", "T").slice(0, 16); // Format for datetime-local
     document.getElementById("register").value = transaction.spenztar || "";
     document.getElementById("cashier").value = transaction.aazon || "";
@@ -120,7 +120,7 @@ async function editTransaction() {
         selado: parseInt(form.querySelector("#cashier").value),
         sfizetesimod: form.querySelector("input[name='select']:checked")?.value || "készpénz",
         sazon: parseInt(sazon),
-        scim: 1 
+        scim: 1
     };
 
     try {
@@ -156,14 +156,14 @@ async function deleteTransaction(sazon) {
             const error = await response.json();
             throw new Error(error.error || "Failed to delete transaction");
         }
-        
-        
+
+
         showNotification("Transaction deleted successfully.", "success");
         fetchTransactions();
         document.getElementById("edittransaction").reset();
     }
-        
-     catch (error) {
+
+    catch (error) {
         console.error("Error deleting product:", error);
         showNotification(`Error deleting product: ${error.message}`, "warning");
         fetchProducts();
@@ -174,14 +174,14 @@ async function deleteTransaction(sazon) {
 document.addEventListener("DOMContentLoaded", () => {
     fetchTransactions();
 
-   
+
     document.getElementById("editTransactionBtn").addEventListener("click", editTransaction);
     document.getElementById("deleteTransactionBtn").addEventListener("click", async () => {
         const sazon = document.getElementById("id").value;
         if (sazon && !isNaN(sazon)) {
-           
-                await deleteTransaction(sazon);
-            
+
+            await deleteTransaction(sazon);
+
         } else {
             showNotification("Please provide a valid Transaction ID to delete.", "warning");
         }

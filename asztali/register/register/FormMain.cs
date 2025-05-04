@@ -26,7 +26,7 @@ namespace register
         }
         class CatalogItem
         {
-            public int tazon;
+            public Int64 tazon;
             public string tnev, tkategoria;
         }
 

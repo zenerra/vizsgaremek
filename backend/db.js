@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+
 let connection;
 
 try {
@@ -13,11 +14,11 @@ try {
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME || "db_nyilvantartas",
     });
-
-} catch (error) {
-    console.error("Failed to connect to database:", error);
-    throw error;
-}
+        
+    } catch (error) {
+        console.error("Failed to connect to database:", error);
+        throw error;
+    }
 
 // Login Endpoint between the platforms
 export async function Belepes(felulet, id) {
@@ -30,8 +31,8 @@ export async function Belepes(felulet, id) {
         }
 
         let sql;
-        if (felulet === "desktop") {
-            sql = "SELECT alkalmazott.agepjog FROM alkalmazott WHERE aazon = ?";
+        if (felulet == "desktop") {
+            sql = "SELECT alkalmazott.agepjog FROM alkalmazott WHERE aazon = ?;";
         } else if (felulet === "web") {
             sql = `SELECT aazon FROM alkalmazott WHERE aazon = ? AND awebjog IS TRUE;`;
         } else {
@@ -56,8 +57,7 @@ export async function DPenztarok() {
 }
 
 export async function DAlkalmazott(aazon) {
-    let sql =
-        "SELECT alkalmazott.anev, alkalmazott.amunka, alkalmazott.aszul, alkalmazott.abelepes FROM alkalmazott WHERE aazon = ?";
+    let sql = "SELECT alkalmazott.anev, alkalmazott.amunka, alkalmazott.aszul, alkalmazott.abelepes FROM alkalmazott WHERE aazon = ?";
     const [result] = await connection.execute(sql, [aazon]);
     return result;
 }

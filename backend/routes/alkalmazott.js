@@ -15,16 +15,10 @@ router.get('/cashiers-performance', async (req, res) => {
     }
 });
 
-router.get('/:aazon', async (req, res) => {
-    console.log('Handling /:aazon');
-    let alkalmazott = await DAlkalmazott(req.params.aazon);
-    res.header('Content-Type', 'application/json');
-    res.status(201).send(alkalmazott);
-});
 
 router.get('/', async (req, res) => {
     try {
-        const alkalmazottak = await DAlkalmazott(); 
+        const alkalmazottak = await db.DAlkalmazott();
         res.status(200).json(alkalmazottak);
     } catch (error) {
         console.error('Hiba az alkalmazottak lekérdezésekor:', error);
@@ -74,7 +68,7 @@ router.get('/belepes/:felulet/:id', async (req, res) => {
         }
         
         console.log('Login successful:', result);
-        res.status(200).json({ success: true, data: result });
+        res.status(200).json(result);
     } catch (error) {
         console.error('Error in belepes:', error);
         res.status(500).json({ 
@@ -87,7 +81,7 @@ router.get('/belepes/:felulet/:id', async (req, res) => {
 
 router.get('/:aazon', async (req, res) => {
     try {
-        let alkalmazott = await DAlkalmazott(req.params.aazon);
+        let alkalmazott = await db.DAlkalmazott(req.params.aazon);
         res.status(201).json(alkalmazott);
     } catch (error) {
         console.error('DAlkalmazott error:', error);

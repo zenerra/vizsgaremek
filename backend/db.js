@@ -34,7 +34,7 @@ export async function Belepes(felulet, id) {
         if (felulet == "desktop") {
             sql = "SELECT alkalmazott.agepjog FROM alkalmazott WHERE aazon = ?;";
         } else if (felulet == "web") {
-            sql = `SELECT aazon FROM alkalmazott WHERE aazon = ? AND awebjog IS TRUE;`;
+            sql = `SELECT alkalmazott.awebjog FROM alkalmazott WHERE aazon = ?;`;
         } else {
             console.error("Invalid felulet:", felulet);
             return null;

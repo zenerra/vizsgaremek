@@ -219,6 +219,8 @@ namespace register
             0,
             0});
             this.numericUpDownQuantity.ValueChanged += new System.EventHandler(this.numericUpDownQuantity_ValueChanged);
+            this.numericUpDownQuantity.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownQuantity_KeyUp);
+            this.numericUpDownQuantity.Leave += new System.EventHandler(this.numericUpDownQuantity_Leave);
             // 
             // labelQuantity
             // 
@@ -372,7 +374,7 @@ namespace register
             this.checkBoxFinalWarning.Name = "checkBoxFinalWarning";
             this.checkBoxFinalWarning.Size = new System.Drawing.Size(420, 50);
             this.checkBoxFinalWarning.TabIndex = 17;
-            this.checkBoxFinalWarning.Text = "A tételhez megerősítés szükséges!";
+            this.checkBoxFinalWarning.Text = "A kosár tartalma jóváhagyást igényel!";
             this.checkBoxFinalWarning.UseVisualStyleBackColor = true;
             // 
             // buttonSubmitReceipt
@@ -388,6 +390,7 @@ namespace register
             this.buttonSubmitReceipt.TabIndex = 16;
             this.buttonSubmitReceipt.Text = "Számla rögzítése";
             this.buttonSubmitReceipt.UseVisualStyleBackColor = false;
+            this.buttonSubmitReceipt.Click += new System.EventHandler(this.buttonSubmitReceipt_Click);
             // 
             // labelChangeDisplay
             // 
@@ -416,7 +419,6 @@ namespace register
             // numericUpDownPayed
             // 
             this.numericUpDownPayed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.numericUpDownPayed.DecimalPlaces = 2;
             this.numericUpDownPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.numericUpDownPayed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.numericUpDownPayed.Location = new System.Drawing.Point(40, 300);
@@ -430,6 +432,8 @@ namespace register
             this.numericUpDownPayed.Size = new System.Drawing.Size(420, 50);
             this.numericUpDownPayed.TabIndex = 13;
             this.numericUpDownPayed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownPayed.ValueChanged += new System.EventHandler(this.numericUpDownPayed_ValueChanged);
+            this.numericUpDownPayed.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownPayed_KeyUp);
             // 
             // labelPayed
             // 
@@ -481,6 +485,7 @@ namespace register
             this.radioButtonCash.TabIndex = 10;
             this.radioButtonCash.Text = "Készpénz";
             this.radioButtonCash.UseVisualStyleBackColor = true;
+            this.radioButtonCash.Click += new System.EventHandler(this.radioButtonCash_Click);
             // 
             // radioButtonCard
             // 
@@ -494,6 +499,7 @@ namespace register
             this.radioButtonCard.TabStop = true;
             this.radioButtonCard.Text = "Kártya";
             this.radioButtonCard.UseVisualStyleBackColor = true;
+            this.radioButtonCard.Click += new System.EventHandler(this.radioButtonCard_Click);
             // 
             // labelToPay
             // 
@@ -531,6 +537,7 @@ namespace register
             this.buttonDeleteLastItem.TabIndex = 16;
             this.buttonDeleteLastItem.Text = "Utolsó tétel törlése";
             this.buttonDeleteLastItem.UseVisualStyleBackColor = false;
+            this.buttonDeleteLastItem.Click += new System.EventHandler(this.buttonDeleteLastItem_Click);
             // 
             // groupBoxTotal
             // 
@@ -587,6 +594,7 @@ namespace register
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.Text = "Pénztár";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);

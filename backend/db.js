@@ -3,29 +3,30 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-let connection;
 
-try {
+//let connection;
+
+/*try {
     connection = await mysql.createConnection({
         host: process.env.DB_HOST || "localhost",
         port: process.env.DB_PORT || 3307,
         user: process.env.DB_USER || "root",
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME || "db_nyilvantartas",
-    });
+    });*/
 
-const connection = await mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME || 'db_nyilvantartas',
-});
-    
-} catch (error) {
-    console.error("Failed to connect to database:", error);
-    throw error;
-}
+    const connection = await mysql.createConnection({
+        host: process.env.DB_HOST || 'localhost',
+        port: process.env.DB_PORT || 3306,
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME || 'db_nyilvantartas',
+    });
+        
+    /*} catch (error) {
+        console.error("Failed to connect to database:", error);
+        throw error;
+    }*/
 
 // Login Endpoint between the platforms
 export async function Belepes(felulet, id) {
@@ -38,8 +39,8 @@ export async function Belepes(felulet, id) {
         }
 
         let sql;
-        if (felulet === "desktop") {
-            sql = "SELECT alkalmazott.agepjog FROM alkalmazott WHERE aazon = ?";
+        if (felulet == "desktop") {
+            sql = "SELECT alkalmazott.agepjog FROM alkalmazott WHERE aazon = ?;";
         } else if (felulet === "web") {
             sql = `SELECT aazon FROM alkalmazott WHERE aazon = ? AND awebjog IS TRUE;`;
         } else {
@@ -64,8 +65,7 @@ export async function DPenztarok() {
 }
 
 export async function DAlkalmazott(aazon) {
-    let sql =
-        "SELECT alkalmazott.anev, alkalmazott.amunka, alkalmazott.aszul, alkalmazott.abelepes FROM alkalmazott WHERE aazon = ?";
+    let sql = "SELECT alkalmazott.anev, alkalmazott.amunka, alkalmazott.aszul, alkalmazott.abelepes FROM alkalmazott WHERE aazon = ?";
     const [result] = await connection.execute(sql, [aazon]);
     return result;
 }

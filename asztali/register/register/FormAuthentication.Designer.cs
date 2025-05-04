@@ -42,10 +42,9 @@ namespace register
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUserId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.textBoxUserId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.textBoxUserId.Location = new System.Drawing.Point(8, 23);
-            this.textBoxUserId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUserId.Location = new System.Drawing.Point(6, 19);
             this.textBoxUserId.Name = "textBoxUserId";
-            this.textBoxUserId.Size = new System.Drawing.Size(488, 22);
+            this.textBoxUserId.Size = new System.Drawing.Size(367, 20);
             this.textBoxUserId.TabIndex = 0;
             // 
             // groupBox1
@@ -53,11 +52,9 @@ namespace register
             this.groupBox1.Controls.Add(this.buttonSubmit);
             this.groupBox1.Controls.Add(this.textBoxUserId);
             this.groupBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Location = new System.Drawing.Point(16, 110);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 89);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(613, 68);
+            this.groupBox1.Size = new System.Drawing.Size(460, 55);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kérem adja meg az alkalmazott azonosítóját a hozzáféréshez!";
@@ -67,24 +64,22 @@ namespace register
             this.buttonSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(125)))), ((int)(((byte)(252)))));
             this.buttonSubmit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonSubmit.Location = new System.Drawing.Point(505, 23);
-            this.buttonSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSubmit.Location = new System.Drawing.Point(379, 19);
             this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(100, 25);
+            this.buttonSubmit.Size = new System.Drawing.Size(75, 20);
             this.buttonSubmit.TabIndex = 1;
-            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.Text = "Belépés";
             this.buttonSubmit.UseVisualStyleBackColor = false;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // formAuthentication
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(45)))), ((int)(((byte)(52)))));
-            this.ClientSize = new System.Drawing.Size(645, 321);
+            this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "formAuthentication";
             this.Text = "Belépés";
             this.Load += new System.EventHandler(this.authentication_Load);

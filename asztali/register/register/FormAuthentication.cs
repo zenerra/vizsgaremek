@@ -103,7 +103,7 @@ namespace register
                         }
                         if (gepjog[0].agepjog)
                         {
-                            FormMain main = new FormMain(iId);
+                            FormMain main = new FormMain(iId, true);
                             main.Show();
                             this.Hide();
                         }

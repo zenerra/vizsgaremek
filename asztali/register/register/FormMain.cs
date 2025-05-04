@@ -20,6 +20,7 @@ namespace register
         List<CatalogItem> catalog = new List<CatalogItem>();
         List<Item> cart = new List<Item>();
         Int64 employeeId;
+        bool isFirstForm;
 
         class Employee
         {
@@ -71,7 +72,10 @@ namespace register
                 {
                     string jsonString = await response.Content.ReadAsStringAsync();
                     employee = JsonConvert.DeserializeObject<List<Employee>>(jsonString)[0];
-                    MessageBox.Show($"Szia {employee.anev}! Jó újra látni.");
+                    if (isFirstForm)
+                    {
+                        MessageBox.Show($"Szia {employee.anev}! Jó újra látni.");
+                    }
                 }
                 else
                 {
@@ -333,7 +337,7 @@ namespace register
                 }
                 else
                 {
-                    MessageBox.Show("Hiba a lekérdezés során! 1");
+                    MessageBox.Show("Hiba a lekérdezés során!");
                 }
             }
             catch (HttpRequestException e)
@@ -363,12 +367,11 @@ namespace register
 
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Sikeres POST!");
                     
                 }
                 else
                 {
-                    MessageBox.Show("Hiba a POST során! 2");
+                    MessageBox.Show("Hiba a POST során!");
                 }
             }
             catch (HttpRequestException e)
@@ -389,7 +392,6 @@ namespace register
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Sikeres POST! 2");
 
                     }
                     else
@@ -403,13 +405,18 @@ namespace register
                 }
             }
 
+            this.Close();
+            FormMain main = new FormMain((int)employeeId, false);
+            main.Show();
+
 
         }
-        public FormMain(int id)
+        public FormMain(int id, bool isFirst)
         {
             InitializeComponent();
             SetEmployee(id);
             employeeId = id;
+            isFirstForm = isFirst;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -423,6 +430,8 @@ namespace register
             labelChangeDisplay.Hide();
             labelPricePerUnitDisplay.Text = "";
             labelSumDisplay.Text = "";
+            labelToPayDisplay.Text = "0 Ft";
+            labelTotal.Text = "0 Ft";
             StreamReader sr = new StreamReader("data.rg");
             labelRegister.Text += sr.ReadLine();
             sr.Close();
@@ -496,12 +505,21 @@ namespace register
         {
             if (checkBoxFinalWarning.Visible && !checkBoxFinalWarning.Checked)
             {
-                MessageBox.Show("Hozzá adás előtt megerősítés szükséges!", "Figyelem!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                MessageBox.Show("Fizetés előtt jóváhagyás szükséges!", "Figyelem!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else if (numericUpDownPayed.Value < Convert.ToInt64(labelToPayDisplay.Text.Substring(0, labelToPayDisplay.Text.Length - 3)))
+            {
+                MessageBox.Show("A fizetett összeg nem elegendő!", "Figyelem!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             }
             else
             {
                 SubmitReceipt();
             }
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

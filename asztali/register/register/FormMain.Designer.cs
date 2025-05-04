@@ -374,7 +374,7 @@ namespace register
             this.checkBoxFinalWarning.Name = "checkBoxFinalWarning";
             this.checkBoxFinalWarning.Size = new System.Drawing.Size(420, 50);
             this.checkBoxFinalWarning.TabIndex = 17;
-            this.checkBoxFinalWarning.Text = "A tételhez megerősítés szükséges!";
+            this.checkBoxFinalWarning.Text = "A kosár tartalma jóváhagyást igényel!";
             this.checkBoxFinalWarning.UseVisualStyleBackColor = true;
             // 
             // buttonSubmitReceipt
@@ -594,6 +594,7 @@ namespace register
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.Text = "Pénztár";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);

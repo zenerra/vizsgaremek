@@ -89,8 +89,13 @@ export async function DUjSzamla(ujSzamla) {
 }
 
 export async function DLegutobbiSzamla() {
-    let sql =
-        "SELECT MAX(szamla.sazon) as sazon FROM szamla";
+    let sql = "SELECT MAX(szamla.sazon) as sazon FROM szamla";
+    const [result] = await connection.execute(sql);
+    return result;
+}
+
+export async function DUzlet() {
+    let sql = "SELECT cim.orszag, cim.iranyitoszam, cim.telepules, cim.kozterulet, cim.hazszam FROM cim WHERE cim.cazon = 1";
     const [result] = await connection.execute(sql);
     return result;
 }

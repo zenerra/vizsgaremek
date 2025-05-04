@@ -1,7 +1,6 @@
 import express from 'express';
 import * as db from '../db.js';
 const router = express.Router();
-console.log("termek.js");
 
 router.get('/all', async (req, res) => {
     try {

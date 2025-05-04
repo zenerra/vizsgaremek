@@ -10,6 +10,13 @@ router.get('/gepek', async (req, res) => {
     res.status(201).send(penztarok);
 });
 
+router.get('/utolso', async (req, res) => {
+    let utolso = await db.DLegutobbiSzamla();
+    res.header('Content-Type', 'application/json');
+    res.status(201).send(utolso);
+});
+
+
 router.post('/', async (req, res) => {
     let ujSzamla = await db.DUjSzamla(req.body);
     res.header('Content-Type', 'application/json');

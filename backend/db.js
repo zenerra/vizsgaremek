@@ -78,8 +78,9 @@ export async function DTermek(tazon) {
 
 export async function DUjSzamla(ujSzamla) {
     let sql =
-        "INSERT INTO szamla (szamla.spenztar, szamla.selado, szamla.sfizetesimod) VALUES (?, ?, ?)";
+        "INSERT INTO szamla (szamla.sazon, szamla.spenztar, szamla.selado, szamla.sfizetesimod) VALUES (?, ?, ?, ?)";
     const [result] = await connection.execute(sql, [
+        ujSzamla.sazon,
         ujSzamla.spenztar,
         ujSzamla.selado,
         ujSzamla.sfizetesimod,
@@ -87,16 +88,25 @@ export async function DUjSzamla(ujSzamla) {
     return result;
 }
 
+export async function DLegutobbiSzamla() {
+    let sql =
+        "SELECT MAX(szamla.sazon) as sazon FROM szamla";
+    const [result] = await connection.execute(sql);
+    return result;
+}
+
 export async function DUjTetel(ujTetel) {
-    let sql = `INSERT INTO tetel (tetel.sazon, tetel.tazon, tetel.mennyiseg) VALUES (?, ?, ?);
-    UPDATE termek SET termek.tmennyiseg = termek.tmennyiseg - ? WHERE termek.tazon = ?`;
+    let sql = `INSERT INTO tetel (tetel.sazon, tetel.tazon, tetel.mennyiseg) VALUES (?, ?, ?)`;
     const [result] = await connection.execute(sql, [
         ujTetel.sazon,
         ujTetel.tazon,
-        ujTetel.mennyiseg,
-        ujTetel.mennyiseg,
-        ujTetel.tazon,
+        ujTetel.mennyiseg
     ]);
+
+    const [result2] = await connection.execute(`UPDATE termek SET termek.tmennyiseg = termek.tmennyiseg - ? WHERE termek.tazon = ?`, [
+        ujTetel.mennyiseg,
+        ujTetel.tazon
+    ]); 
 
     const [[{ lowStock }]] = await connection.execute(
         'SELECT IF(tmennyiseg < tminkeszlet, "true", "false") AS lowStock FROM termek WHERE tazon = ?',

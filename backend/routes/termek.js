@@ -17,7 +17,7 @@ router.get('/all', async (req, res) => {
 router.get('/termeklista', async (req, res) => {
     try {
         let termekLista = await db.DTermekLista();
-        res.json(termekLista); // res.json automatikusan beállítja a Content-Type-ot
+        res.json(termekLista);
     } catch (error) {
         console.error('Error fetching product list:', error);
         res.status(500).json({ error: 'Server error' });

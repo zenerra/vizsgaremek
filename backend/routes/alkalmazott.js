@@ -27,27 +27,9 @@ router.get('/', async (req, res) => {
 });
 router.get('/belepes/:felulet/:id', async (req, res) => {
     try {
-        console.log(`Handling GET /server/alkalmazott/belepes/${req.params.felulet}/${req.params.id}`);
         const { felulet, id } = req.params;
 
-        // Validate id
-        if (!id) {
-            console.log('Missing id parameter');
-            return res.status(400).json({ 
-                success: false, 
-                message: 'Felhasználói azonosító szükséges' 
-            });
-        }
-
-        // Ensure id is a number (aazon is likely numeric in the database)
         const numericId = Number(id);
-        if (isNaN(numericId)) {
-            console.log('Invalid id format:', id);
-            return res.status(400).json({ 
-                success: false, 
-                message: 'Érvénytelen felhasználói azonosító formátum' 
-            });
-        }
 
         const result = await db.Belepes(felulet, numericId);
         
@@ -70,10 +52,10 @@ router.get('/belepes/:felulet/:id', async (req, res) => {
         console.log('Login successful:', result);
         res.status(200).json(result);
     } catch (error) {
-        console.error('Error in belepes:', error);
+        console.error('Error in login:', error);
         res.status(500).json({ 
             success: false, 
-            message: 'Szerver hiba',
+            message: 'Server error',
             error: error.message 
         });
     }

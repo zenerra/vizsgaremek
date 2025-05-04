@@ -16,11 +16,6 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Debug middleware
-app.use((req, res, next) => {
-    console.log(`Request: ${req.method} ${req.url}`);
-    next();
-});
 
 app.use((req, res, next) => {
     const originalJson = res.json;
@@ -40,23 +35,19 @@ app.use('/images', express.static(path.join(__dirname, '../frontend/images')));
 // Routerek
 import alkalmazott from './routes/alkalmazott.js';
 app.use('/server/alkalmazott', alkalmazott);
-console.log("Mounted route: /server/alkalmazott");
 
 import szamla from './routes/szamla.js';
 app.use('/server/szamla', szamla);
-console.log("Mounted route: /server/szamla");
 
 import termek from './routes/termek.js';
 app.use('/server/termek', termek);
-console.log("Mounted route: /server/termek");
 
 import tetel from './routes/tetel.js';
 app.use('/server/tetel', tetel);
-console.log("Mounted route: /server/tetel");
 
 import beszallito from './routes/beszallito.js';
 app.use('/server/beszallito', beszallito);
-console.log("Mounted route: /server/beszallito");
+
 
 // Catch-all for 404
 app.use((req, res) => {

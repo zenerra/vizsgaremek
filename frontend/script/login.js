@@ -22,7 +22,6 @@ document.querySelector('.help').addEventListener('mouseover', function() {
 document.querySelector('.help').addEventListener('mouseout', function() {
     document.querySelector('.helptext').style.display = 'none';
 });
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
     
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const aazon = form.querySelector('#userid').value;
         
         try {
-            console.log(`Fetching /server/alkalmazott/belepes/web/${aazon}`);
             const response = await fetch(`/server/alkalmazott/belepes/web/${aazon}`, {
                 method: 'GET',
                 headers: {
@@ -39,19 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            console.log(`Response status: ${response.status}`);
             const result = await response.json();
-            console.log('RESULT:', result);
             
-            if (response.ok && result.success) {
-                console.log("Beleptel!");
+            if (result.success) {
                 window.location.href = '/web/main.html';
             } else {
-                console.log('Login failed:', { status: response.status, result });
                 showNotification(result.message || 'Érvénytelen felhasználói azonosító!', 'warning');
             }
         } catch (error) {
-            console.error('Bejelentkezési hiba:', error);
             showNotification('Hálózati vagy szerver hiba!', 'warning');
         }
     });

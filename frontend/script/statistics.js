@@ -66,7 +66,6 @@ fetch('/server/alkalmazott/cashiers-performance')
         cashierPerformance.insertAdjacentHTML('afterend', '<p style="color: red;">Failed to load cashiers performance data</p>');
     });
 
-// Fetch Payment Method Preference
 fetch('/server/szamla/payment-preference')
     .then(response => {
         if (!response.ok) throw new Error('Failed to fetch payment preference');
@@ -106,7 +105,6 @@ fetch('/server/szamla/payment-preference')
         paymentPreference.insertAdjacentHTML('afterend', '<p style="color: red;">Failed to load payment preference data</p>');
     });
 
-// Fetch Monthly Sales
 
 fetch('/server/szamla/monthly-sales')
     .then(response => {

@@ -41,7 +41,6 @@ async function fetchTransactions() {
     }
 }
 
-// Display transactions in the table
 function displayTransactions(transactions) {
     const tbody = document.getElementById("transactionsBody");
     tbody.innerHTML = "";
@@ -94,7 +93,6 @@ function populateForm(transaction) {
     document.getElementById("cashier").value = transaction.aazon || "";
     document.getElementById("id").value = transaction.sazon || "";
 
-    // Set the payment method radio button
     const cashRadio = document.getElementById("cash-radio");
     const cardRadio = document.getElementById("card-radio");
     if (transaction.sfizetesimod === "készpénz") {
@@ -104,7 +102,7 @@ function populateForm(transaction) {
     }
 }
 
-// Handle form submission for editing a transaction
+
 async function editTransaction() {
     const form = document.getElementById("edittransaction");
     const sazon = form.querySelector("#id").value;

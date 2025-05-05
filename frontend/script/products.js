@@ -17,13 +17,10 @@ function showNotification(message, type = 'success') {
 // Beszállítók lekérése és validSupplierIds frissítése
 async function fetchSuppliers() {
     try {
-        console.log("Fetching suppliers from /server/beszallito");
         const response = await fetch('/server/beszallito');
-        console.log("Fetch response status:", response.status);
         if (!response.ok) throw new Error(`Failed to fetch suppliers: ${response.status}`);
         const suppliers = await response.json();
-        console.log("Fetched suppliers:", suppliers);
-        validSupplierIds = suppliers.map(s => s.bazon); // Assuming bazon is the ID field
+        validSupplierIds = suppliers.map(s => s.bazon);
         return validSupplierIds;
     } catch (error) {
         console.error('Error fetching suppliers:', error);
@@ -104,7 +101,7 @@ async function fetchProducts() {
     }
 }
 
-// Űrlap megjelenítése és kitöltése
+
 function showForm(product = {}) {
     const form = document.getElementById('edititem');
     if (!form) {
@@ -163,18 +160,13 @@ function validateForm(form) {
     return true;
 }
 
-// Űrlap ürítése
+
 function emptyForm() {
     const form = document.getElementById('edititem');
-    if (!form) {
-        console.error('Edit form not found!');
-        return;
-    }
     form.reset();
     showNotification('Form successfully reset.', 'success');
 }
 
-// Termék szerkesztése
 async function editByProductId() {
     const form = document.getElementById('edititem');
     if (!form || !validateForm(form)) return;
@@ -207,7 +199,7 @@ async function editByProductId() {
             throw new Error(error.error || 'Failed to update product');
         }
 
-        fetchProducts(); // Frissítjük a terméklistát
+        fetchProducts();
         showNotification('Product updated successfully.', 'success');
     } catch (error) {
         console.error('Error updating product:', error);
@@ -215,7 +207,6 @@ async function editByProductId() {
     }
 }
 
-// Új termék létrehozása
 async function createProduct() {
     const form = document.getElementById('edititem');
     if (!form || !validateForm(form)) return;
@@ -243,7 +234,7 @@ async function createProduct() {
         }
         const result = await response.json();
 
-        fetchProducts(); // Frissítjük a terméklistát
+        fetchProducts(); 
         showNotification(`Product created successfully. ID: ${result.tazon}`, 'success');
     } catch (error) {
         console.error('Error creating product:', error);
@@ -251,7 +242,7 @@ async function createProduct() {
     }
 }
 
-// Termék törlése
+
 async function deleteProduct(tazon) {
     if (!tazon || isNaN(tazon)) {
         showNotification('Please provide a valid Product ID.', 'warning');
@@ -265,25 +256,24 @@ async function deleteProduct(tazon) {
             const error = await response.json();
             throw new Error(error.error || 'Failed to delete product');
         }
-        fetchProducts(); // Frissítjük a terméklistát
+        fetchProducts();
         showNotification('Product deleted successfully.', 'success');
     } catch (error) {
         console.error('Error deleting product:', error);
         showNotification(`Error deleting product: ${error.message}`, 'warning');
-        fetchProducts(); // Frissítjük a listát hiba esetén is
+        fetchProducts(); 
     }
 }
 
-// Termékek kézi újratöltése
 function refreshProducts() {
     fetchProducts();
     showNotification('Products refreshed.', 'success');
 }
 
-// Eseménykezelő
+
 document.addEventListener('DOMContentLoaded', async () => {
-    validSupplierIds = await fetchSuppliers(); // Frissítjük a validSupplierIds-t
-    fetchProducts(); // Betöltjük a termékeket
+    validSupplierIds = await fetchSuppliers(); 
+    fetchProducts(); 
 
     document.getElementById('edititem')?.addEventListener('submit', (e) => {
         e.preventDefault();

@@ -71,7 +71,6 @@ function displayTransactions(transactions) {
         // Add click event to the Edit button to populate the form
         const editButton = row.querySelector(".edit-btn");
         editButton.addEventListener("click", () => {
-            console.log("INSETRT FORM")
             populateForm(tx);
             document.getElementById("edittransaction").scrollIntoView({ behavior: "smooth" });
         });

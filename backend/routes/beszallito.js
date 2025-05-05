@@ -6,8 +6,6 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
       let beszallito = await db.WGetBeszallito();
-      console.log("Suppliers fetched:", beszallito);
-      console.log("Status set to 200");
       res.status(200).json(beszallito);
   } catch (error) {
       console.error('Error fetching suppliers:', error);

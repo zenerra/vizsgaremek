@@ -23,7 +23,6 @@ try {
 // Login Endpoint between the platforms
 export async function Belepes(felulet, id) {
     try {
-        console.log(`Belepes called with felulet: ${felulet}, id: ${id}`);
         
         if (id === undefined || id === null) {
             console.error('Invalid id: id is undefined or null');
@@ -41,7 +40,6 @@ export async function Belepes(felulet, id) {
         }
         
         const [result] = await connection.execute(sql, [id]);
-        console.log('Belepes query result:', result);
         return result;
     } catch (error) {
         console.error('Error in Belepes:', error);
@@ -122,16 +120,7 @@ export async function DUjTetel(ujTetel) {
             "SELECT termek.tnev, termek.tmennyiseg, termek.tmennyisegiegyseg, termek.tminkeszlet, termek.trendeles, beszallito.bemail, beszallito.bnev FROM termek JOIN beszallito USING(bazon) WHERE termek.tazon = ?",
             [ujTetel.tazon]
         );
-        console.log(`
-            \n
-            A(z) ${adatok[0].tnev} -ból/-ből a készlet mennyiség elérte kritikus pontot! \n
-            Jelenlegi mennyiség: ${adatok[0].tmennyiseg} ${adatok[0].tmennyisegiegyseg} \n
-            Meghatározott határérték: ${adatok[0].tminkeszlet} ${adatok[0].tmennyisegiegyseg} \n \n
-            Új rendelés leadva ${adatok[0].trendeles} ${adatok[0].tmennyisegiegyseg} ${adatok[0].tnev} -ról/-ről a(z) ${adatok[0].bemail} e-mail címre. \n \n
-            Beszállító kapcsolattartási adatai: \n
-            \t- Megnevezés: ${adatok[0].bnev} \n
-            \t- E-mail cím: ${adatok[0].bemail}
-        `);
+       
         await connection.execute(
             "UPDATE termek SET tmennyiseg = tmennyiseg + trendeles WHERE tazon = ?",
             [ujTetel.tazon]
@@ -197,7 +186,6 @@ export async function WGetBeszallito() {
     try {
         const sql = "SELECT * FROM beszallito WHERE 1";
         const [result] = await connection.execute(sql);
-        console.log("WGetBeszallito result:", result);
         return result;
     } catch (error) {
         console.error('Error in WGetBeszallito:', error);
